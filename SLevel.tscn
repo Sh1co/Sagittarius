@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/SLevel.gd" type="Script" id=1]
+[ext_resource path="res://SPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.5, 33.5 )
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+s_player = ExtResource( 2 )
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 105, 342 )
+__meta__ = {
+"_gizmo_extents_": 30.0
+}
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 272, 229 )
+
+[node name="Goal" type="StaticBody2D" parent="."]
+position = Vector2( 853, 317 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Goal"]
+texture = ExtResource( 3 )
