@@ -25,5 +25,5 @@ jobs:
           git config --global user.name 'Sh1co'
           git config --global user.email 'shico.m.nafee@gmail.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git commit -am "Automated changes"
+          git commit -am "Automated code formatting"
           git push
