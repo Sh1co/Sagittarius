@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/SLevel.gd" type="Script" id=1]
 [ext_resource path="res://SPlayer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.5, 33.5 )
-
-[node name="Node" type="Node"]
+[node name="Node" type="Node2D"]
 script = ExtResource( 1 )
 s_player = ExtResource( 2 )
 
@@ -17,14 +13,12 @@ __meta__ = {
 "_gizmo_extents_": 30.0
 }
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 272, 229 )
+[node name="Button" type="Button" parent="."]
+margin_left = 129.0
+margin_top = 87.0
+margin_right = 275.0
+margin_bottom = 130.0
+text = "Complete Level"
+icon_align = 1
 
-[node name="Goal" type="StaticBody2D" parent="."]
-position = Vector2( 853, 317 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Goal"]
-texture = ExtResource( 3 )
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
