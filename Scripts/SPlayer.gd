@@ -1,8 +1,11 @@
 extends Area2D
 
+signal player_died
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+export var health = 100
 export var top_speed = Vector2(250, 250)
 export var acceleration = Vector2(450, 450)
 export var deceleration = Vector2(600, 600)
@@ -10,9 +13,10 @@ export var deceleration = Vector2(600, 600)
 var velocity = Vector2.ZERO
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass  # Replace with function body.
+func change_health(delta):
+	health += delta
+	if health <= 0:
+		emit_signal("player_died")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
