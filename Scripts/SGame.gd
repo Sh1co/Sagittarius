@@ -1,7 +1,6 @@
 extends Node2D
 
-
-export (Array) var levels
+export(Array) var levels
 var current_level_index = 0
 
 
@@ -11,11 +10,12 @@ func _ready():
 
 
 func _load_level(index):
-	print("Loading Level "+str(index+1))
+	print("Loading Level " + str(index + 1))
 	var level = levels[index].instance()
 	level.position = Vector2.ZERO
 	level.connect("level_complete", self, "_on_level_complete")
 	add_child(level)
+
 
 func _on_level_complete():
 	current_level_index += 1

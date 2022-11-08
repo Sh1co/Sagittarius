@@ -11,7 +11,6 @@ func _ready():
 	add_child(player)
 
 
-
 func level_complete():
 	print("Level Complete!")
 	emit_signal("level_complete")
