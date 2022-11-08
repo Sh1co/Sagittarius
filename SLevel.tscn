@@ -21,4 +21,12 @@ margin_bottom = 130.0
 text = "Complete Level"
 icon_align = 1
 
+[node name="Button2" type="Button" parent="."]
+margin_left = 130.0
+margin_top = 144.0
+margin_right = 276.0
+margin_bottom = 191.0
+text = "Damage Player"
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
