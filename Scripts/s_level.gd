@@ -1,3 +1,4 @@
+class_name SLevel
 extends Node2D
 
 signal level_complete

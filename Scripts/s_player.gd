@@ -1,3 +1,4 @@
+class_name SPlayer
 extends RigidBody2D
 
 signal player_died
@@ -13,8 +14,8 @@ export var deceleration = Vector2(600, 600)
 var velocity = Vector2.ZERO
 
 
-func change_health(delta):
-	health += delta
+func change_health(change):
+	health += change
 	if health <= 0:
 		emit_signal("player_died")
 

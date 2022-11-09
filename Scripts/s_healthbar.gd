@@ -1,3 +1,4 @@
+class_name SHealthBar
 extends ProgressBar
 
 

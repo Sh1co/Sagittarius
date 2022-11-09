@@ -1,3 +1,4 @@
+class_name SGame
 extends Node2D
 
 export(Array) var levels
