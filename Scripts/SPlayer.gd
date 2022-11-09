@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 signal player_died
 
@@ -50,4 +50,4 @@ func _movement(delta):
 	velocity.x = clamp(velocity.x, -top_speed.x, top_speed.x)
 	velocity.y = clamp(velocity.y, -top_speed.y, top_speed.y)
 
-	position += velocity * delta
+	linear_velocity = velocity
