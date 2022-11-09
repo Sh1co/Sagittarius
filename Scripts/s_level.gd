@@ -46,3 +46,9 @@ func _on_Button_pressed():
 
 func _on_Button2_pressed():
 	change_player_health(-20)
+
+func _spawn_enemies():
+	pass
+
+func on_enemy_spawned(enemy):
+	pass

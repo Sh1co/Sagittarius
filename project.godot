@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://Scripts/s_enemy.gd"
 }, {
 "base": "Node2D",
+"class": "SEnemySpawner",
+"language": "GDScript",
+"path": "res://Scripts/s_enemy_spawner.gd"
+}, {
+"base": "Node2D",
 "class": "SGame",
 "language": "GDScript",
 "path": "res://Scripts/s_game.gd"
@@ -36,6 +41,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "SEnemy": "",
+"SEnemySpawner": "",
 "SGame": "",
 "SHealthBar": "",
 "SLevel": "",
