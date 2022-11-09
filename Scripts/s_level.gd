@@ -22,7 +22,7 @@ func _ready():
 	healthbar = s_healthbar.instance() as SHealthBar
 	healthbar.init(player.health, player.health)
 	add_child(healthbar)
-	
+
 	_spawn_enemies()
 
 
