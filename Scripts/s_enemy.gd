@@ -26,7 +26,7 @@ func _movement(delta):
 
 
 func _damage_player():
-	emit_signal("attacked_player", damage)
+	emit_signal("attacked_player", -damage)
 
 
 func _on_SEnemy_body_entered(body):

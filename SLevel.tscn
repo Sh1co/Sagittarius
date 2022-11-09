@@ -3,12 +3,13 @@
 [ext_resource path="res://Scripts/s_level.gd" type="Script" id=1]
 [ext_resource path="res://SPlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://SHealthBar.tscn" type="PackedScene" id=3]
-[ext_resource path="res://SEnemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SEnemySpawner.tscn" type="PackedScene" id=4]
 
 [node name="SLevel" type="Node2D"]
 script = ExtResource( 1 )
 s_player = ExtResource( 2 )
 s_healthbar = ExtResource( 3 )
+s_enemy_spawner = ExtResource( 4 )
 
 [node name="StartPosition" type="Position2D" parent="."]
 position = Vector2( 105, 342 )
@@ -30,9 +31,6 @@ margin_top = 144.0
 margin_right = 276.0
 margin_bottom = 191.0
 text = "Damage Player"
-
-[node name="Area2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 727, 273 )
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
