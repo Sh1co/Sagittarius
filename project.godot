@@ -8,6 +8,40 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "SEnemy",
+"language": "GDScript",
+"path": "res://Scripts/s_enemy.gd"
+}, {
+"base": "Node2D",
+"class": "SGame",
+"language": "GDScript",
+"path": "res://Scripts/s_game.gd"
+}, {
+"base": "ProgressBar",
+"class": "SHealthBar",
+"language": "GDScript",
+"path": "res://Scripts/s_healthbar.gd"
+}, {
+"base": "Node2D",
+"class": "SLevel",
+"language": "GDScript",
+"path": "res://Scripts/s_level.gd"
+}, {
+"base": "RigidBody2D",
+"class": "SPlayer",
+"language": "GDScript",
+"path": "res://Scripts/s_player.gd"
+} ]
+_global_script_class_icons={
+"SEnemy": "",
+"SGame": "",
+"SHealthBar": "",
+"SLevel": "",
+"SPlayer": ""
+}
+
 [application]
 
 config/name="Project S"
