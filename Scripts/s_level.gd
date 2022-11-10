@@ -54,11 +54,13 @@ func _spawn_enemies():
 func _on_enemy_spawned(enemy):
 	enemy.connect("attacked_player", self, "change_player_health")
 
+
 func _spawn_player():
 	player = s_player.instance() as SPlayer
 	player.position = $StartPosition.position
 	player.connect("player_died", self, "player_died")
 	add_child(player)
+
 
 func _add_health_bar():
 	healthbar = s_healthbar.instance() as SHealthBar
