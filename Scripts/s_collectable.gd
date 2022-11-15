@@ -3,9 +3,6 @@ extends Node2D
 
 signal collected(value)
 
-export var value = 5
-
-
 func _process(delta):
 	_movement(delta)
 
@@ -13,8 +10,10 @@ func _process(delta):
 func _movement(delta):
 	pass
 
+func _collected():
+	pass
 
 func _on_SCollectable_body_entered(body):
 	if body.is_in_group("Player"):
-		emit_signal("collected", value)
+		_collected()
 		queue_free()
