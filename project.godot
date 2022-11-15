@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/s_game.gd"
 }, {
+"base": "SLevel",
+"class": "SGamePlayLevel",
+"language": "GDScript",
+"path": "res://Scripts/s_gameplay_level.gd"
+}, {
 "base": "ProgressBar",
 "class": "SHealthBar",
 "language": "GDScript",
@@ -48,6 +53,7 @@ _global_script_class_icons={
 "SEnemy": "",
 "SEnemySpawner": "",
 "SGame": "",
+"SGamePlayLevel": "",
 "SHealthBar": "",
 "SLevel": "",
 "SMainMenu": "",
