@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Project S"
-run/main_scene="res://SGame.tscn"
+run/main_scene="res://Scenes/SGame.tscn"
 config/icon="res://icon.png"
 
 [gui]
