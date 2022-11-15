@@ -1,15 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Scripts/s_enemy_spawner.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/SEnemy.tscn" type="PackedScene" id=2]
 
 [node name="SEnemySpawner" type="Node2D"]
 script = ExtResource( 1 )
-s_enemies = [ ExtResource( 2 ), ExtResource( 2 ) ]
-enemy_positions = [ NodePath("EnemyPos1"), NodePath("EnemyPos2") ]
-
-[node name="EnemyPos1" type="Position2D" parent="."]
-position = Vector2( 489, 102 )
-
-[node name="EnemyPos2" type="Position2D" parent="."]
-position = Vector2( 503, 419 )

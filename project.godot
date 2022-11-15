@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/s_enemy_spawner.gd"
 }, {
+"base": "SEnemySpawner",
+"class": "SFixedEnemySpawner",
+"language": "GDScript",
+"path": "res://Scripts/s_fixed_enemy_spawner.gd"
+}, {
 "base": "Node2D",
 "class": "SGame",
 "language": "GDScript",
@@ -52,6 +57,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "SEnemy": "",
 "SEnemySpawner": "",
+"SFixedEnemySpawner": "",
 "SGame": "",
 "SGamePlayLevel": "",
 "SHealthBar": "",
