@@ -3,9 +3,6 @@ extends RigidBody2D
 
 signal player_died
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 export var health = 100
 export var top_speed = Vector2(350, 350)
 export var acceleration = Vector2(450, 450)

@@ -1,5 +1,5 @@
 class_name SEnemy
-extends Area2D
+extends Node2D
 
 signal attacked_player(attack_damage)
 

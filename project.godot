@@ -9,20 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area2D",
+"base": "Node2D",
+"class": "SCollectable",
+"language": "GDScript",
+"path": "res://Scripts/s_collectable.gd"
+}, {
+"base": "Node2D",
 "class": "SEnemy",
 "language": "GDScript",
 "path": "res://Scripts/s_enemy.gd"
 }, {
 "base": "Node2D",
-"class": "SEnemySpawner",
+"class": "SEntitySpawner",
 "language": "GDScript",
-"path": "res://Scripts/s_enemy_spawner.gd"
+"path": "res://Scripts/s_entity_spawner.gd"
 }, {
-"base": "SEnemySpawner",
-"class": "SFixedEnemySpawner",
+"base": "SEntitySpawner",
+"class": "SFixedEntitySpawner",
 "language": "GDScript",
-"path": "res://Scripts/s_fixed_enemy_spawner.gd"
+"path": "res://Scripts/s_fixed_entity_spawner.gd"
 }, {
 "base": "Node2D",
 "class": "SGame",
@@ -55,9 +60,10 @@ _global_script_classes=[ {
 "path": "res://Scripts/s_player.gd"
 } ]
 _global_script_class_icons={
+"SCollectable": "",
 "SEnemy": "",
-"SEnemySpawner": "",
-"SFixedEnemySpawner": "",
+"SEntitySpawner": "",
+"SFixedEntitySpawner": "",
 "SGame": "",
 "SGamePlayLevel": "",
 "SHealthBar": "",

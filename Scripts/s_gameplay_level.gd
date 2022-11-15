@@ -4,9 +4,11 @@ extends SLevel
 export(PackedScene) var s_player
 export(PackedScene) var s_healthbar
 export(PackedScene) var s_enemy_spawner
+export(PackedScene) var s_coins_spawner
 
 var player
 var healthbar
+var coins = 0
 
 
 func _ready():
@@ -15,6 +17,8 @@ func _ready():
 	_add_health_bar()
 
 	_spawn_enemies()
+
+	_spawn_coins()
 
 
 func change_player_health(change):
@@ -34,14 +38,30 @@ func _on_Button2_pressed():
 
 
 func _spawn_enemies():
-	var enemy_spawner = s_enemy_spawner.instance() as SEnemySpawner
+	var enemy_spawner = s_enemy_spawner.instance() as SEntitySpawner
 	add_child(enemy_spawner)
-	enemy_spawner.connect("enemy_spawned", self, "_on_enemy_spawned")
+	enemy_spawner.connect("entity_spawned", self, "_on_enemy_spawned")
 	enemy_spawner.spawn()
+
+
+func _spawn_coins():
+	var coins_spawner = s_coins_spawner.instance() as SEntitySpawner
+	add_child(coins_spawner)
+	coins_spawner.connect("entity_spawned", self, "_on_collectable_spawned")
+	coins_spawner.spawn()
 
 
 func _on_enemy_spawned(enemy):
 	enemy.connect("attacked_player", self, "change_player_health")
+
+
+func _on_collectable_spawned(collectable):
+	collectable.connect("collected", self, "_on_collectable_collected")
+
+
+func _on_collectable_collected(value):
+	coins += value
+	print("Coins collected! You know have: " + str(coins))
 
 
 func _spawn_player():
