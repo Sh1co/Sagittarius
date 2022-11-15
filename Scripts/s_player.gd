@@ -27,7 +27,7 @@ func _process(delta):
 
 func _movement(delta):
 	velocity = linear_velocity
-	
+
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= acceleration.y * delta
 		if velocity.y > 0:
@@ -49,7 +49,8 @@ func _movement(delta):
 		if velocity.x < 0:
 			velocity.x += deceleration.x * delta
 		_update_velocity()
-	
+
+
 func _update_velocity():
 	velocity.x = clamp(velocity.x, -top_speed.x, top_speed.x)
 	velocity.y = clamp(velocity.y, -top_speed.y, top_speed.y)
