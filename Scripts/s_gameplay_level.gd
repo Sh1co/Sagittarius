@@ -16,6 +16,7 @@ func _ready():
 
 	_spawn_enemies()
 
+
 func change_player_health(change):
 	print("Player health changed by " + str(change))
 	player.change_health(change)
