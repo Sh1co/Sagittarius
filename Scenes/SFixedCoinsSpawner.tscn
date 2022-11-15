@@ -5,6 +5,7 @@
 
 [node name="SFixedEntitySpawner" instance=ExtResource( 1 )]
 entities = [ ExtResource( 2 ), ExtResource( 2 ) ]
+entity_positions = [ NodePath("Pos1"), NodePath("Pos2") ]
 
 [node name="Pos1" parent="." index="0"]
 position = Vector2( 817, 292 )
