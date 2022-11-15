@@ -18,9 +18,11 @@ func _ready():
 
 
 func change_player_health(change):
-	print("Player health changed by " + str(change))
 	player.change_health(change)
-	healthbar.health_changed(player.health)
+	print("Player health changed by " + str(change))
+	if healthbar != null:
+		healthbar.health_changed(player.health)
+		print("HealthBar updated!")
 
 
 func _on_Button_pressed():
