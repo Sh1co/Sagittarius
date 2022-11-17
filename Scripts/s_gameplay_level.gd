@@ -10,7 +10,6 @@ export(PackedScene) var s_coins_counter_ui
 var player
 var healthbar
 var coins_counter_ui
-var coins = 0
 
 
 func _ready():
@@ -64,9 +63,11 @@ func _on_collectable_spawned(collectable):
 
 
 func _on_collectable_collected(value):
-	coins += value
-	coins_counter_ui.coins_updated(coins)
-	print("Coins collected! You know have: " + str(coins))
+	if coins_manager != null:
+		coins_manager.change_coins(value)
+		print("Coins collected! You know have: " + str(coins_manager.get_coins()))
+	else:
+		print("Coins collected! But coins manager isn't added to the game!")
 
 
 func _spawn_player():
@@ -84,4 +85,9 @@ func _add_health_bar():
 
 func _add_coins_counter():
 	coins_counter_ui = s_coins_counter_ui.instance() as SCoinsCounterUI
+	if coins_manager != null:
+		coins_manager.connect("coins_update", coins_counter_ui, "coins_updated")
+		coins_counter_ui.coins_updated(coins_manager.get_coins())
+	else:
+		print("Coins manager was not added to game!")
 	add_child(coins_counter_ui)

@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/SGamePlayLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/s_game.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/SMainMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/SCoinsManager.tscn" type="PackedScene" id=4]
 
 [node name="SGame" type="Node2D"]
 script = ExtResource( 2 )
 levels = [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 1 ) ]
+s_coins_manager = ExtResource( 4 )
