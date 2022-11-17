@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://Scripts/s_coin.gd"
 }, {
 "base": "Node2D",
+"class": "SCoinsCounter",
+"language": "GDScript",
+"path": "res://Scripts/s_coins_counter.gd"
+}, {
+"base": "Node2D",
 "class": "SCollectable",
 "language": "GDScript",
 "path": "res://Scripts/s_collectable.gd"
@@ -66,6 +71,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "SCoin": "",
+"SCoinsCounter": "",
 "SCollectable": "",
 "SEnemy": "",
 "SEntitySpawner": "",
