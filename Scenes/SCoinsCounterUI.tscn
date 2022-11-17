@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/s_coins_counter.gd" type="Script" id=1]
 
-[node name="SCoinsCounter" type="Node2D"]
+[node name="SCoinsCounterUI" type="Node2D"]
 position = Vector2( 8, 85 )
 script = ExtResource( 1 )
 

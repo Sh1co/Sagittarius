@@ -5,11 +5,11 @@ export(PackedScene) var s_player
 export(PackedScene) var s_healthbar
 export(PackedScene) var s_enemy_spawner
 export(PackedScene) var s_coins_spawner
-export(PackedScene) var s_coins_counter
+export(PackedScene) var s_coins_counter_ui
 
 var player
 var healthbar
-var coins_counter
+var coins_counter_ui
 var coins = 0
 
 
@@ -65,7 +65,7 @@ func _on_collectable_spawned(collectable):
 
 func _on_collectable_collected(value):
 	coins += value
-	coins_counter.coins_updated(coins)
+	coins_counter_ui.coins_updated(coins)
 	print("Coins collected! You know have: " + str(coins))
 
 
@@ -83,5 +83,5 @@ func _add_health_bar():
 
 
 func _add_coins_counter():
-	coins_counter = s_coins_counter.instance() as SCoinsCounter
-	add_child(coins_counter)
+	coins_counter_ui = s_coins_counter_ui.instance() as SCoinsCounterUI
+	add_child(coins_counter_ui)

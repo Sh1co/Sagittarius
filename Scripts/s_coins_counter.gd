@@ -1,4 +1,4 @@
-class_name SCoinsCounter
+class_name SCoinsCounterUI
 extends Node2D
 
 
