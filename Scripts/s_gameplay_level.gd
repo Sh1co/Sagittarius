@@ -17,7 +17,7 @@ func _ready():
 	_spawn_player()
 
 	_add_health_bar()
-	
+
 	_add_coins_counter()
 
 	_spawn_enemies()
@@ -80,7 +80,8 @@ func _add_health_bar():
 	healthbar = s_healthbar.instance() as SHealthBar
 	healthbar.init(player.health, player.health)
 	add_child(healthbar)
-	
+
+
 func _add_coins_counter():
 	coins_counter = s_coins_counter.instance() as SCoinsCounter
 	add_child(coins_counter)
