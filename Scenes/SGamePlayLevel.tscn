@@ -36,5 +36,13 @@ margin_right = 276.0
 margin_bottom = 191.0
 text = "Damage Player"
 
+[node name="Button3" type="Button" parent="."]
+margin_left = 133.0
+margin_top = 203.0
+margin_right = 279.0
+margin_bottom = 250.0
+text = "Reset coins"
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]

@@ -40,6 +40,12 @@ func _on_Button2_pressed():
 	change_player_health(-20)
 
 
+func _on_Button3_pressed():
+	print("Reseting Coins!")
+	if coins_manager != null:
+		coins_manager.change_coins(-coins_manager.get_coins())
+
+
 func _spawn_enemies():
 	var enemy_spawner = s_enemy_spawner.instance() as SEntitySpawner
 	add_child(enemy_spawner)
