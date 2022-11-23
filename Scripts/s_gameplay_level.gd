@@ -47,6 +47,8 @@ func _on_Button3_pressed():
 
 
 func _spawn_enemies():
+	if s_enemy_spawner == null:
+		return
 	var enemy_spawner = s_enemy_spawner.instance() as SEntitySpawner
 	add_child(enemy_spawner)
 	enemy_spawner.connect("entity_spawned", self, "_on_enemy_spawned")
@@ -54,6 +56,8 @@ func _spawn_enemies():
 
 
 func _spawn_coins():
+	if s_coins_spawner == null:
+		return
 	var coins_spawner = s_coins_spawner.instance() as SEntitySpawner
 	add_child(coins_spawner)
 	coins_spawner.connect("entity_spawned", self, "_on_collectable_spawned")
@@ -77,6 +81,8 @@ func _on_collectable_collected(value):
 
 
 func _spawn_player():
+	if s_player == null:
+		return
 	player = s_player.instance() as SPlayer
 	player.position = $StartPosition.position
 	player.connect("player_died", self, "player_died")
@@ -84,12 +90,16 @@ func _spawn_player():
 
 
 func _add_health_bar():
+	if s_healthbar == null:
+		return
 	healthbar = s_healthbar.instance() as SHealthBar
 	healthbar.init(player.health, player.health)
 	add_child(healthbar)
 
 
 func _add_coins_counter():
+	if s_coins_counter_ui == null:
+		return
 	coins_counter_ui = s_coins_counter_ui.instance() as SCoinsCounterUI
 	if coins_manager != null:
 		coins_manager.connect("coins_update", coins_counter_ui, "coins_updated")
