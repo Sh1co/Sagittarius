@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Samples/Dodge the creeps/Scripts/enemy_spawner.gd" type="Script" id=1]
+[ext_resource path="res://Samples/Dodge the creeps/Enemy.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 481, 1, 0, 0, 0, 0, 478, 723, 0, 0, 0, 0, -2, 722, 0, 0, 0, 0, 3, 1 )
+}
+
+[node name="SEnemySpawner" type="Node2D"]
+script = ExtResource( 1 )
+enemy = ExtResource( 2 )
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2( 3, 1 )
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.75
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]

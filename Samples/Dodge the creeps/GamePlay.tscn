@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Samples/Dodge the creeps/Scripts/game_play.gd" type="Script" id=1]
+[ext_resource path="res://Samples/Dodge the creeps/EnemySpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Samples/Dodge the creeps/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Samples/Dodge the creeps/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 4 )
+
+[node name="SLevel" type="Node2D"]
+script = ExtResource( 1 )
+s_player = ExtResource( 3 )
+s_enemy_spawner = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 480.0
+margin_bottom = 720.0
+color = Color( 0.219608, 0.372549, 0.380392, 1 )
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 244, 409 )
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_left = 155.0
+margin_top = 25.0
+margin_right = 308.0
+margin_bottom = 103.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
