@@ -24,6 +24,11 @@ func change_health(change):
 		emit_signal("player_died")
 
 
+func _input(event):
+	if event.is_action_pressed("click"):
+		target = get_global_mouse_position()
+
+
 func _physics_process(delta):
 	_movement(delta)
 
@@ -33,12 +38,7 @@ func _movement(delta):
 		MovementType.DIRECTIONAL_INPUT:
 			_directional_input_movement(delta)
 		MovementType.CLICK_AND_MOVE:
-			_click_and_move_movement(delta)
-
-
-func _input(event):
-	if event.is_action_pressed("click"):
-		target = get_global_mouse_position()
+			_click_and_move_movement()
 
 
 func _directional_input_movement(delta):
@@ -67,7 +67,7 @@ func _directional_input_movement(delta):
 		_update_velocity()
 
 
-func _click_and_move_movement(delta):
+func _click_and_move_movement():
 	velocity = position.direction_to(target) * top_speed
 	if position.distance_to(target) < 5:
 		velocity = Vector2.ZERO
