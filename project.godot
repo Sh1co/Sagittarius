@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/s_collectable.gd"
 }, {
-"base": "Node2D",
+"base": "KinematicBody2D",
 "class": "SEnemy",
 "language": "GDScript",
 "path": "res://Scripts/s_enemy.gd"
@@ -74,7 +74,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/s_player.gd"
 }, {
-"base": "RigidBody2D",
+"base": "Area2D",
 "class": "SProjectile",
 "language": "GDScript",
 "path": "res://Scripts/s_projectile.gd"

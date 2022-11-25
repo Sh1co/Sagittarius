@@ -103,6 +103,7 @@ func _shoot_projectile(direction, launch_velocity):
 	projectile.launch_velocity = launch_velocity
 	projectile.rotation += direction
 	projectile.position = position
-	projectile.collision_mask | (1 << 1)
+	projectile.collision_mask |= (1 << 2)
+	projectile.targets.append("Enemy")
 	get_parent().add_child(projectile)
 	$ShootingCooldown.start()

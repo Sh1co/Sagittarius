@@ -1,5 +1,5 @@
 class_name SProjectile
-extends RigidBody2D
+extends Area2D
 
 export var speed = 600
 export(Array) var targets
@@ -8,12 +8,13 @@ export var damage = 20
 var launch_velocity = Vector2.ZERO
 
 
-func _integrate_forces(state):
-	_movement(state)
+func _physics_process(delta):
+	_movement(delta)
 
 
-func _movement(state):
-	state.linear_velocity = Vector2.UP.rotated(rotation) * speed + launch_velocity
+func _movement(delta):
+	var velocity = Vector2.UP.rotated(rotation) * speed + launch_velocity
+	position += velocity * delta
 
 
 func _on_SProjectile_body_entered(body):

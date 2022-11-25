@@ -6,9 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 31.5 )
 
-[node name="SEnemy" type="Area2D"]
+[node name="SEnemy" type="KinematicBody2D" groups=["Enemy"]]
 modulate = Color( 0.878431, 0.0705882, 0.0705882, 1 )
-collision_layer = 2
+collision_layer = 4
 collision_mask = 3
 script = ExtResource( 2 )
 
@@ -18,5 +18,3 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-
-[connection signal="body_entered" from="." to="." method="_on_SEnemy_body_entered"]
