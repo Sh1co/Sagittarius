@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/s_automatic_shooter.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/SProjectile.tscn" type="PackedScene" id=2]
+
+[node name="SAutomaticShooter" type="Node2D"]
+script = ExtResource( 1 )
+s_projectile = ExtResource( 2 )
+
+[node name="ShootingInterval" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[connection signal="timeout" from="ShootingInterval" to="." method="_on_ShootingInterval_timeout"]
