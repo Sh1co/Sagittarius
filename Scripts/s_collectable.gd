@@ -4,14 +4,6 @@ extends Node2D
 signal collected(value)
 
 
-func _process(delta):
-	_movement(delta)
-
-
-func _movement(delta):
-	pass
-
-
 func _collected():
 	pass
 
