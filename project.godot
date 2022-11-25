@@ -73,6 +73,11 @@ _global_script_classes=[ {
 "class": "SPlayer",
 "language": "GDScript",
 "path": "res://Scripts/s_player.gd"
+}, {
+"base": "RigidBody2D",
+"class": "SProjectile",
+"language": "GDScript",
+"path": "res://Scripts/s_projectile.gd"
 } ]
 _global_script_class_icons={
 "SCoin": "",
@@ -87,7 +92,8 @@ _global_script_class_icons={
 "SHealthBar": "",
 "SLevel": "",
 "SMainMenu": "",
-"SPlayer": ""
+"SPlayer": "",
+"SProjectile": ""
 }
 
 [application]

@@ -1,8 +1,6 @@
 class_name SEnemy
 extends Node2D
 
-signal attacked_player(attack_damage)
-
 export var damage = 20
 
 var speed = 400
@@ -31,4 +29,4 @@ func _damage_player():
 
 func _on_SEnemy_body_entered(body):
 	if body.is_in_group("Player"):
-		_damage_player()
+		body.change_health(-damage)

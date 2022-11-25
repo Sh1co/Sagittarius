@@ -2,6 +2,7 @@ class_name SPlayer
 extends RigidBody2D
 
 signal player_died
+signal health_changed(new_health)
 
 enum MovementType {
 	DIRECTIONAL_INPUT,
@@ -20,6 +21,7 @@ onready var target = position
 
 func change_health(change):
 	health += change
+	emit_signal("health_changed", health)
 	if health <= 0:
 		emit_signal("player_died")
 

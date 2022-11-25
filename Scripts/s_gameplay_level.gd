@@ -27,9 +27,6 @@ func _ready():
 func change_player_health(change):
 	player.change_health(change)
 	print("Player health changed by " + str(change))
-	if healthbar != null:
-		healthbar.health_changed(player.health)
-		print("HealthBar updated!")
 
 
 func _on_Button_pressed():
@@ -51,7 +48,6 @@ func _spawn_enemies():
 		return
 	var enemy_spawner = s_enemy_spawner.instance() as SEntitySpawner
 	add_child(enemy_spawner)
-	enemy_spawner.connect("entity_spawned", self, "_on_enemy_spawned")
 	enemy_spawner.spawn()
 
 
@@ -62,10 +58,6 @@ func _spawn_coins():
 	add_child(coins_spawner)
 	coins_spawner.connect("entity_spawned", self, "_on_collectable_spawned")
 	coins_spawner.spawn()
-
-
-func _on_enemy_spawned(enemy):
-	enemy.connect("attacked_player", self, "change_player_health")
 
 
 func _on_collectable_spawned(collectable):
@@ -94,6 +86,7 @@ func _add_health_bar():
 		return
 	healthbar = s_healthbar.instance() as SHealthBar
 	healthbar.init(player.health, player.health)
+	player.connect("health_changed", healthbar, "health_changed")
 	add_child(healthbar)
 
 
