@@ -11,7 +11,7 @@ enum MovementType {
 
 export var health = 100
 export(MovementType) var movement_type = MovementType.DIRECTIONAL_INPUT
-export var top_speed = Vector2(350, 350)
+export var top_speed = Vector2(450, 450)
 export var acceleration = Vector2(450, 450)
 export var deceleration = Vector2(600, 600)
 export(PackedScene) var s_projectile_shooter

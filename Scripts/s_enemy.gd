@@ -1,5 +1,5 @@
 class_name SEnemy
-extends KinematicBody2D
+extends RigidBody2D
 
 export var health = 100
 export var damage = 20
@@ -37,7 +37,6 @@ func _damage_player():
 
 
 func _on_SEnemy_body_entered(body):
-	print("Coll!!")
 	if body.is_in_group("Player"):
 		body.change_health(-damage)
 

@@ -10,6 +10,7 @@ extents = Vector2( 32, 31 )
 [node name="SPlayer" type="RigidBody2D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 5
+mode = 2
 gravity_scale = 0.0
 linear_damp = 2.0
 script = ExtResource( 1 )
