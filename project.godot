@@ -78,6 +78,16 @@ _global_script_classes=[ {
 "class": "SProjectile",
 "language": "GDScript",
 "path": "res://Scripts/s_projectile.gd"
+}, {
+"base": "Node2D",
+"class": "SProjectileShooter",
+"language": "GDScript",
+"path": "res://Scripts/s_projectile_shooter.gd"
+}, {
+"base": "SEnemy",
+"class": "SStationaryEnemy",
+"language": "GDScript",
+"path": "res://Scripts/s_stationary_enemy.gd"
 } ]
 _global_script_class_icons={
 "SCoin": "",
@@ -93,7 +103,9 @@ _global_script_class_icons={
 "SLevel": "",
 "SMainMenu": "",
 "SPlayer": "",
-"SProjectile": ""
+"SProjectile": "",
+"SProjectileShooter": "",
+"SStationaryEnemy": ""
 }
 
 [application]
