@@ -8,6 +8,8 @@ extents = Vector2( 32, 31.5 )
 
 [node name="SEnemy" type="Area2D"]
 modulate = Color( 0.878431, 0.0705882, 0.0705882, 1 )
+collision_layer = 2
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

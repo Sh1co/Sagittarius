@@ -7,8 +7,10 @@ export var damage = 20
 
 var launch_velocity = Vector2.ZERO
 
+
 func _integrate_forces(state):
 	_movement(state)
+
 
 func _movement(state):
 	state.linear_velocity = Vector2.UP.rotated(rotation) * speed + launch_velocity
