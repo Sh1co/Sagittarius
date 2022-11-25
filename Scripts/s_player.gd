@@ -14,10 +14,25 @@ export(MovementType) var movement_type = MovementType.DIRECTIONAL_INPUT
 export var top_speed = Vector2(350, 350)
 export var acceleration = Vector2(450, 450)
 export var deceleration = Vector2(600, 600)
-export(PackedScene) var s_projectile
+export(PackedScene) var s_projectile_shooter
 
 var velocity = Vector2.ZERO
+var enemy_mask = 1 << 2
+var enemy_group = "Enemy"
 onready var target = position
+
+
+func _ready():
+	_add_shooter()
+
+
+func _input(event):
+	if event.is_action_pressed("click"):
+		target = get_global_mouse_position()
+
+
+func _physics_process(delta):
+	_movement(delta)
 
 
 func change_health(change):
@@ -25,16 +40,6 @@ func change_health(change):
 	emit_signal("health_changed", health)
 	if health <= 0:
 		emit_signal("player_died")
-
-
-func _input(event):
-	if event.is_action_pressed("click"):
-		target = get_global_mouse_position()
-	_check_shooting(event)
-
-
-func _physics_process(delta):
-	_movement(delta)
 
 
 func _movement(delta):
@@ -85,25 +90,9 @@ func _update_velocity():
 	linear_velocity = velocity
 
 
-func _check_shooting(event):
-	if !$ShootingCooldown.is_stopped():
+func _add_shooter():
+	if s_projectile_shooter == null:
 		return
-	if event.is_action_pressed("shoot_up"):
-		_shoot_projectile(0, linear_velocity)
-	if event.is_action_pressed("shoot_down"):
-		_shoot_projectile(PI, linear_velocity)
-	if event.is_action_pressed("shoot_right"):
-		_shoot_projectile(PI / 2, linear_velocity)
-	if event.is_action_pressed("shoot_left"):
-		_shoot_projectile(-PI / 2, linear_velocity)
-
-
-func _shoot_projectile(direction, launch_velocity):
-	var projectile = s_projectile.instance() as SProjectile
-	projectile.launch_velocity = launch_velocity
-	projectile.rotation += direction
-	projectile.position = position
-	projectile.collision_mask |= (1 << 2)
-	projectile.targets.append("Enemy")
-	get_parent().add_child(projectile)
-	$ShootingCooldown.start()
+	var shooter = s_projectile_shooter.instance() as SProjectileShooter
+	shooter.init([enemy_group], enemy_mask)
+	add_child(shooter)

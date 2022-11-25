@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/s_player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/SProjectile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/SManualKeyboardShooter.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 31 )
@@ -13,7 +13,7 @@ collision_mask = 5
 gravity_scale = 0.0
 linear_damp = 2.0
 script = ExtResource( 1 )
-s_projectile = ExtResource( 3 )
+s_projectile_shooter = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
