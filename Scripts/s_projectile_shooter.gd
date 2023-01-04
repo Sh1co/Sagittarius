@@ -7,7 +7,7 @@ var targets = []
 var projectile_mask
 var add_parent_velocity
 var velocity = Vector2.ZERO
-var past_position = global_position
+onready var past_position = global_position
 var is_initialized = false
 
 
