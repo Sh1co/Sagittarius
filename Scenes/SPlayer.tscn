@@ -14,6 +14,7 @@ mode = 2
 gravity_scale = 0.0
 linear_damp = 2.0
 script = ExtResource( 1 )
+movement_type = 1
 s_projectile_shooter = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
