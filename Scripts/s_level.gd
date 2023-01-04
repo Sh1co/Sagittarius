@@ -12,10 +12,12 @@ func level_complete():
 	emit_signal("level_complete")
 	self.queue_free()
 
+
 func level_failed():
 	print("Level Failed!")
 	emit_signal("level_failed")
 	self.queue_free()
+
 
 func player_died():
 	print("Player died, reseting level.")
