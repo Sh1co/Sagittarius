@@ -1,6 +1,7 @@
 class_name SGame
 extends Node2D
 
+export(PackedScene) var s_main_menu
 export(Array) var levels
 export(PackedScene) var s_coins_manager
 var current_level_index = 0
@@ -10,7 +11,7 @@ var coins_manager: SCoinsManager
 
 func _ready():
 	_add_coins_manager()
-	_load_level(current_level_index)
+	_load_main_menu()
 
 
 func _load_level(index):
@@ -23,13 +24,27 @@ func _load_level(index):
 	call_deferred("add_child", level)
 
 
+func _load_main_menu():
+	var main_menu = s_main_menu.instance()
+	main_menu.connect("level_complete", self, "_on_levels_start")
+	main_menu.coins_manager = coins_manager
+	call_deferred("add_child", main_menu)
+
+
 func _reload_current_level():
 	_load_level(current_level_index)
 
 
 func _on_level_complete():
 	current_level_index += 1
-	current_level_index %= levels.size()
+	if current_level_index >= levels.size():
+		current_level_index = 0
+		_load_main_menu()
+		return
+	_load_level(current_level_index)
+
+
+func _on_levels_start():
 	_load_level(current_level_index)
 
 
