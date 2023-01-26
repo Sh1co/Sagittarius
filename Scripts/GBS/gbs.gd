@@ -1,14 +1,19 @@
 extends Node
 
-onready var save_data
+var save_data = {}
 
 
 func _ready():
-	pass
+	_getsave_data()
 
 
 func _getsave_data():
-	pass
+	var save_file = File.new()
+	if not save_file.file_exists("user://gbs.save"):
+		save()
+	save_file.open("user://gbs.save", File.READ)
+	save_data = parse_json(save_file.get_line())
+	save_file.close()
 
 
 func save():
