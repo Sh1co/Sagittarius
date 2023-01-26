@@ -6,8 +6,10 @@ var save_data = {}
 func _ready():
 	_getsave_data()
 
+
 func _exit_tree():
 	save()
+
 
 func _getsave_data():
 	var save_file = File.new()
