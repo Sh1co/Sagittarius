@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "GBS",
+"language": "GDScript",
+"path": "res://Scripts/GBS/gbs.gd"
+}, {
 "base": "SCollectable",
 "class": "SCoin",
 "language": "GDScript",
@@ -90,6 +95,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/s_stationary_enemy.gd"
 } ]
 _global_script_class_icons={
+"GBS": "",
 "SCoin": "",
 "SCoinsCounterUI": "",
 "SCoinsManager": "",
