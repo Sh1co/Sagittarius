@@ -4,6 +4,7 @@ extends Node
 signal coins_update(new_value)
 
 var coins = 0
+const COINS_KEY = "coins"
 
 
 func _ready():
@@ -11,21 +12,12 @@ func _ready():
 
 
 func get_coins():
-	var coins_data = File.new()
-	if not coins_data.file_exists("user://coins.save"):
-		_set_coins(coins)
-	coins_data.open("user://coins.save", File.READ)
-	var str_value = coins_data.get_line()
-	coins_data.close()
-	coins = int(str_value)
+	coins = int(GBS.get_var(COINS_KEY, coins))
 	return coins
 
 
 func _set_coins(value):
-	var coins_data = File.new()
-	coins_data.open("user://coins.save", File.WRITE)
-	coins_data.store_line(str(value))
-	coins_data.close()
+	GBS.set_var(COINS_KEY, coins)
 
 
 func change_coins(change):
