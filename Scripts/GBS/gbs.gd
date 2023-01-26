@@ -17,7 +17,10 @@ func _getsave_data():
 
 
 func save():
-	pass
+	var save_file = File.new()
+	save_file.open("user://gbs.save", File.WRITE)
+	save_file.store_line(to_json(save_data))
+	save_file.close()
 
 
 func set_var(key, value):
