@@ -3,8 +3,9 @@ extends Node
 
 signal coins_update(new_value)
 
-var coins = 0
 const COINS_KEY = "coins"
+
+var coins = 0
 
 
 func _ready():
@@ -17,7 +18,7 @@ func get_coins():
 
 
 func _set_coins(value):
-	GBS.set_var(COINS_KEY, coins)
+	GBS.set_var(COINS_KEY, value)
 
 
 func change_coins(change):

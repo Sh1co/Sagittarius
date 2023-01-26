@@ -7,8 +7,8 @@ var targets = []
 var projectile_mask
 var add_parent_velocity
 var velocity = Vector2.ZERO
-onready var past_position = global_position
 var is_initialized = false
+onready var past_position = global_position
 
 
 func _physics_process(delta):

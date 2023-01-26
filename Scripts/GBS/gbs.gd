@@ -34,8 +34,7 @@ func set_var(key, value):
 func get_var(key, default):
 	if has_var(key):
 		return save_data[key]
-	else:
-		return default
+	return default
 
 
 func has_var(key):
