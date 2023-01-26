@@ -18,7 +18,6 @@ func get_coins():
 
 func _set_coins(value):
 	GBS.set_var(COINS_KEY, coins)
-	GBS.save()
 
 
 func change_coins(change):
