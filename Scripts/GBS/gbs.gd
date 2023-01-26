@@ -24,20 +24,23 @@ func save():
 
 
 func set_var(key, value):
-	pass
+	save_data[key] = value
 
 
 func get_var(key, default):
-	pass
+	if has_var(key):
+		return save_data[key]
+	else:
+		return default
 
 
 func has_var(key):
-	pass
+	return save_data.has(key)
 
 
 func delete_var(key):
-	pass
+	return save_data.erase(key)
 
 
 func delete_all():
-	pass
+	save_data.clear()
