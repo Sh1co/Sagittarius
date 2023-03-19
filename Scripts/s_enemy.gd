@@ -1,9 +1,9 @@
 class_name SEnemy
 extends RigidBody2D
 
-export var health = 100
-export var damage = 20
-export(PackedScene) var s_projectile_shooter
+@export var health = 100
+@export var damage = 20
+@export var s_projectile_shooter: PackedScene
 
 var speed = 400
 var angular_speed = PI
@@ -44,6 +44,6 @@ func _on_SEnemy_body_entered(body):
 func _add_shooter():
 	if s_projectile_shooter == null:
 		return
-	var shooter = s_projectile_shooter.instance() as SProjectileShooter
+	var shooter = s_projectile_shooter.instantiate() as SProjectileShooter
 	shooter.init([player_group], player_mask)
 	add_child(shooter)

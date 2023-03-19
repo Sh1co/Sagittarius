@@ -1,14 +1,14 @@
 class_name SProjectileShooter
 extends Node2D
 
-export(PackedScene) var s_projectile
+@export var s_projectile: PackedScene
 
 var targets = []
 var projectile_mask
 var add_parent_velocity
 var velocity = Vector2.ZERO
 var is_initialized = false
-onready var past_position = global_position
+@onready var past_position = global_position
 
 
 func _physics_process(delta):
@@ -26,7 +26,7 @@ func _shoot_projectile(direction):
 	if !is_initialized:
 		push_warning("Shooter not initialized. Make sure you call init on shooter!")
 		return
-	var projectile = s_projectile.instance() as SProjectile
+	var projectile = s_projectile.instantiate() as SProjectile
 	if add_parent_velocity:
 		projectile.launch_velocity = velocity
 	projectile.rotation += direction

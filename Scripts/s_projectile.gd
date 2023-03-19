@@ -1,9 +1,9 @@
 class_name SProjectile
 extends Area2D
 
-export var speed = 600
-export(Array) var targets
-export var damage = 20
+@export var speed = 600
+@export var targets: Array
+@export var damage = 20
 
 var launch_velocity = Vector2.ZERO
 

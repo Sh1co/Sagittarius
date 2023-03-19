@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/gameover.wav-ebcd0c055e6756a69528e16ce25e08aa.sample"
+type="AudioStreamWAV"
+uid="uid://cjsd4octl3tnx"
+path="res://.godot/imported/gameover.wav-ebcd0c055e6756a69528e16ce25e08aa.sample"
 
 [deps]
 
 source_file="res://Samples/Dodge the creeps/art/gameover.wav"
-dest_files=[ "res://.import/gameover.wav-ebcd0c055e6756a69528e16ce25e08aa.sample" ]
+dest_files=["res://.godot/imported/gameover.wav-ebcd0c055e6756a69528e16ce25e08aa.sample"]
 
 [params]
 

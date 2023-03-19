@@ -8,19 +8,19 @@ func _ready():
 
 
 func _movement(delta):
-	._movement(delta)
+	super._movement(delta)
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
 	if velocity.length() > 0:
-		$Sprite.play()
+		$Sprite2D.play()
 	else:
-		$Sprite.stop()
+		$Sprite2D.stop()
 
 	if velocity.x != 0:
-		$Sprite.animation = "right"
-		$Sprite.flip_v = false
-		$Sprite.flip_h = velocity.x < 0
+		$Sprite2D.animation = "right"
+		$Sprite2D.flip_v = false
+		$Sprite2D.flip_h = velocity.x < 0
 	elif velocity.y != 0:
-		$Sprite.animation = "up"
-		$Sprite.flip_v = velocity.y > 0
+		$Sprite2D.animation = "up"
+		$Sprite2D.flip_v = velocity.y > 0

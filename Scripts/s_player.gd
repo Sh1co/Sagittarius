@@ -9,17 +9,17 @@ enum MovementType {
 	CLICK_AND_MOVE,
 }
 
-export var health = 100
-export(MovementType) var movement_type = MovementType.DIRECTIONAL_INPUT
-export var top_speed = Vector2(450, 450)
-export var acceleration = Vector2(450, 450)
-export var deceleration = Vector2(600, 600)
-export(PackedScene) var s_projectile_shooter
+@export var health = 100
+@export var movement_type: MovementType = MovementType.DIRECTIONAL_INPUT
+@export var top_speed = Vector2(450, 450)
+@export var acceleration = Vector2(450, 450)
+@export var deceleration = Vector2(600, 600)
+@export var s_projectile_shooter: PackedScene
 
 var velocity = Vector2.ZERO
 var enemy_mask = 1 << 2
 var enemy_group = "Enemy"
-onready var target = position
+@onready var target = position
 
 
 func _ready():
@@ -93,6 +93,6 @@ func _update_velocity():
 func _add_shooter():
 	if s_projectile_shooter == null:
 		return
-	var shooter = s_projectile_shooter.instance() as SProjectileShooter
+	var shooter = s_projectile_shooter.instantiate() as SProjectileShooter
 	shooter.init([enemy_group], enemy_mask)
 	add_child(shooter)
