@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes/SHealthBar.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://Scenes/SPlayer.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://ddj1b46vb83da" path="res://Scenes/SPlayer.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://Scenes/SFixedEnemySpawner.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://Scenes/SFixedCoinsSpawner.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="6"]
