@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://ds4qdbf722tka"]
 
-[ext_resource path="res://Scenes/SCollectable.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/s_coin.gd" type="Script" id=2]
+[ext_resource type="PackedScene" path="res://Scenes/SCollectable.tscn" id="1"]
+[ext_resource type="Script" path="res://Scripts/s_coin.gd" id="2"]
 
-[node name="SCoin" instance=ExtResource( 1 )]
-modulate = Color( 0.968627, 0.909804, 0.0392157, 1 )
-script = ExtResource( 2 )
+[node name="SCoin" instance=ExtResource("1")]
+modulate = Color(0.968627, 0.909804, 0.0392157, 1)
+collision_mask = 2
+script = ExtResource("2")
 value = 5
