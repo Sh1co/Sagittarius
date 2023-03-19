@@ -67,7 +67,7 @@ func _on_collectable_spawned(collectable):
 func _on_collectable_collected(value):
 	if coins_manager != null:
 		coins_manager.change_coins(value)
-		print("Coins collected! You know have: " + str(coins_manager.get_coins()))
+		print("Coins collected! You now have: " + str(coins_manager.get_coins()))
 	else:
 		print("Coins collected! But coins manager isn't added to the game!")
 
