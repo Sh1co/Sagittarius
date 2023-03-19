@@ -4,7 +4,7 @@ extends Node2D
 @export var s_main_menu: PackedScene
 @export var levels: Array[PackedScene]
 @export var s_coins_manager: PackedScene
-var current_level_index = 0
+var current_level_index = -1
 
 var coins_manager: SCoinsManager
 
@@ -38,7 +38,7 @@ func _reload_current_level():
 func _on_level_complete():
 	current_level_index += 1
 	if current_level_index >= levels.size():
-		current_level_index = 0
+		current_level_index = -1
 		_load_main_menu()
 		return
 	_load_level(current_level_index)
