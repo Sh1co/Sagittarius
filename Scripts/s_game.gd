@@ -16,17 +16,17 @@ func _ready():
 
 func _load_level(index):
 	print("Loading Level " + str(index + 1))
-	var level = levels[index].instance() as SLevel
+	var level = levels[index].instantiate() as SLevel
 	level.position = Vector2.ZERO
-	level.connect("level_complete", self, "_on_level_complete")
-	level.connect("level_failed", self, "_reload_current_level")
+	level.level_completed.connect(_on_level_complete.bind())
+	level.level_failed.connect(_reload_current_level.bind())
 	level.coins_manager = coins_manager
 	call_deferred("add_child", level)
 
 
 func _load_main_menu():
-	var main_menu = s_main_menu.instance()
-	main_menu.connect("level_complete", self, "_on_levels_start")
+	var main_menu = s_main_menu.instantiate()
+	main_menu.level_completed.connect(_on_level_complete.bind())
 	main_menu.coins_manager = coins_manager
 	call_deferred("add_child", main_menu)
 
@@ -52,5 +52,5 @@ func _add_coins_manager():
 	if s_coins_manager == null:
 		push_warning("Coins manager not added to main game node!")
 		return
-	coins_manager = s_coins_manager.instance() as SCoinsManager
+	coins_manager = s_coins_manager.instantiate() as SCoinsManager
 	add_child(coins_manager)
