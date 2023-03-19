@@ -1,9 +1,9 @@
 class_name SGame
 extends Node2D
 
-export(PackedScene) var s_main_menu
-export(Array) var levels
-export(PackedScene) var s_coins_manager
+@export var s_main_menu: PackedScene
+@export var levels: Array[PackedScene]
+@export var s_coins_manager: PackedScene
 var current_level_index = 0
 
 var coins_manager: SCoinsManager
