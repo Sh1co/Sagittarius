@@ -1,19 +1,19 @@
 class_name SLevel
 extends Node2D
 
-signal level_complete
+signal level_completed
 signal level_failed
 
 var coins_manager: SCoinsManager
 
 
-func level_complete():
+func complete_level():
 	print("Level Complete!")
-	emit_signal("level_complete")
+	emit_signal("level_completed")
 	self.queue_free()
 
 
-func level_failed():
+func fail_level():
 	print("Level Failed!")
 	emit_signal("level_failed")
 	self.queue_free()
@@ -21,4 +21,4 @@ func level_failed():
 
 func player_died():
 	print("Player died, reseting level.")
-	level_failed()
+	fail_level()

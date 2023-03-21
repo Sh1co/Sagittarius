@@ -7,6 +7,6 @@ position = Vector2( 8, 85 )
 script = ExtResource( 1 )
 
 [node name="CoinsLabel" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+offset_right = 40.0
+offset_bottom = 14.0
 text = "Coins: 0"

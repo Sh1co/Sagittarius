@@ -1,6 +1,6 @@
 extends SEntitySpawner
 
-export(PackedScene) var enemy
+@export var enemy: PackedScene
 
 
 func _ready():
@@ -13,7 +13,7 @@ func spawn():
 
 func _on_MobTimer_timeout():
 	# Create a new instance of the Mob scene.
-	var mob = enemy.instance()
+	var mob = enemy.instantiate()
 
 	# Choose a random location on Path2D.
 	var mob_spawn_location = $MobPath/MobSpawnLocation
@@ -26,7 +26,7 @@ func _on_MobTimer_timeout():
 	mob.position = mob_spawn_location.position
 
 	# Add some randomness to the direction.
-	direction += rand_range(-PI / 4, PI / 4)
+	direction += randf_range(-PI / 4, PI / 4)
 	mob.rotation = direction
 
 	emit_signal("entity_spawned", mob)

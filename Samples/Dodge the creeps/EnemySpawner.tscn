@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 481, 1, 0, 0, 0, 0, 478, 723, 0, 0, 0, 0, -2, 722, 0, 0, 0, 0, 3, 1 )
+"points": PackedVector2Array( 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 481, 1, 0, 0, 0, 0, 478, 723, 0, 0, 0, 0, -2, 722, 0, 0, 0, 0, 3, 1 )
 }
 
 [node name="SEnemySpawner" type="Node2D"]

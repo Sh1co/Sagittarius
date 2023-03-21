@@ -1,10 +1,10 @@
 extends SEnemy
 
-export var movement_speed = 100
+@export var movement_speed = 100
 
 
 func _ready():
-	$Sprite.playing = true
+	$Sprite2D.playing = true
 
 
 func _movement(delta):

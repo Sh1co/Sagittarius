@@ -8,5 +8,5 @@
 entities = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 3 ) ]
 entity_positions = [ NodePath("Pos1"), NodePath("Pos2"), NodePath("Pos3") ]
 
-[node name="Pos3" type="Position2D" parent="." index="2"]
+[node name="Pos3" type="Marker2D" parent="." index="2"]
 position = Vector2( 905, 249 )

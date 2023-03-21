@@ -9,17 +9,17 @@ enum MovementType {
 	CLICK_AND_MOVE,
 }
 
-export var health = 100
-export(MovementType) var movement_type = MovementType.DIRECTIONAL_INPUT
-export var top_speed = Vector2(450, 450)
-export var acceleration = Vector2(450, 450)
-export var deceleration = Vector2(600, 600)
-export(PackedScene) var s_projectile_shooter
+@export var health = 100
+@export var movement_type: MovementType = MovementType.DIRECTIONAL_INPUT
+@export var top_speed = Vector2(450, 450)
+@export var acceleration = Vector2(450, 450)
+@export var deceleration = Vector2(600, 600)
+@export var s_projectile_shooter: PackedScene
 
 var velocity = Vector2.ZERO
 var enemy_mask = 1 << 2
 var enemy_group = "Enemy"
-onready var target = position
+@onready var target = position
 
 
 func _ready():
@@ -63,6 +63,12 @@ func _directional_input_movement(delta):
 		if velocity.y < 0:
 			velocity.y += deceleration.y * delta
 		_update_velocity()
+	elif abs(velocity.y) > 0.001:
+		if velocity.y < -0.001:
+			velocity.y += min(deceleration.y * delta, abs(velocity.y))
+		elif velocity.y > 0.001:
+			velocity.y -= min(deceleration.y * delta, velocity.y)
+		_update_velocity()
 
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= acceleration.x * delta
@@ -74,6 +80,12 @@ func _directional_input_movement(delta):
 		if velocity.x < 0:
 			velocity.x += deceleration.x * delta
 		_update_velocity()
+	elif abs(velocity.x) > 0.001:
+		if velocity.x < -0.001:
+			velocity.x += min(deceleration.x * delta, abs(velocity.x))
+		elif velocity.x > 0.001:
+			velocity.x -= min(deceleration.x * delta, velocity.x)
+		_update_velocity()
 
 
 func _click_and_move_movement():
@@ -84,6 +96,7 @@ func _click_and_move_movement():
 
 
 func _update_velocity():
+	print(velocity)
 	velocity.x = clamp(velocity.x, -top_speed.x, top_speed.x)
 	velocity.y = clamp(velocity.y, -top_speed.y, top_speed.y)
 
@@ -93,6 +106,6 @@ func _update_velocity():
 func _add_shooter():
 	if s_projectile_shooter == null:
 		return
-	var shooter = s_projectile_shooter.instance() as SProjectileShooter
+	var shooter = s_projectile_shooter.instantiate() as SProjectileShooter
 	shooter.init([enemy_group], enemy_mask)
 	add_child(shooter)
