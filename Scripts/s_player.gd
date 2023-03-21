@@ -63,6 +63,12 @@ func _directional_input_movement(delta):
 		if velocity.y < 0:
 			velocity.y += deceleration.y * delta
 		_update_velocity()
+	elif abs(velocity.y) > 0.001:
+		if velocity.y < -0.001:
+			velocity.y += min(deceleration.y * delta, abs(velocity.y))
+		elif velocity.y > 0.001:
+			velocity.y -= min(deceleration.y * delta, velocity.y)
+		_update_velocity()
 
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= acceleration.x * delta
@@ -74,6 +80,12 @@ func _directional_input_movement(delta):
 		if velocity.x < 0:
 			velocity.x += deceleration.x * delta
 		_update_velocity()
+	elif abs(velocity.x) > 0.001:
+		if velocity.x < -0.001:
+			velocity.x += min(deceleration.x * delta, abs(velocity.x))
+		elif velocity.x > 0.001:
+			velocity.x -= min(deceleration.x * delta, velocity.x)
+		_update_velocity()
 
 
 func _click_and_move_movement():
@@ -84,6 +96,7 @@ func _click_and_move_movement():
 
 
 func _update_velocity():
+	print(velocity)
 	velocity.x = clamp(velocity.x, -top_speed.x, top_speed.x)
 	velocity.y = clamp(velocity.y, -top_speed.y, top_speed.y)
 
