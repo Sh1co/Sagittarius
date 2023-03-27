@@ -25,6 +25,9 @@ func _load_level(index):
 
 
 func _load_main_menu():
+	if s_main_menu == null:
+		_on_level_complete()
+		return
 	var main_menu = s_main_menu.instantiate()
 	main_menu.level_completed.connect(_on_level_complete.bind())
 	main_menu.coins_manager = coins_manager
