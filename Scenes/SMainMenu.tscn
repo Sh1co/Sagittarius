@@ -12,4 +12,11 @@ offset_right = 610.0
 offset_bottom = 315.0
 text = "Start"
 
+[node name="AllLevels" type="Button" parent="."]
+offset_left = 500.0
+offset_top = 327.0
+offset_right = 611.0
+offset_bottom = 374.0
+text = "All levels"
+
 [connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
