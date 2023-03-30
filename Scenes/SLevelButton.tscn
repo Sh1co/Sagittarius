@@ -10,3 +10,5 @@ offset_bottom = 86.0
 text = "Level 0"
 icon = ExtResource("1_632v3")
 script = ExtResource("2_3suub")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

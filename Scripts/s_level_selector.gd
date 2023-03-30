@@ -13,4 +13,5 @@ func _ready():
 func _create_Level_Grid():
 	for level in levels:
 		var lvl_btn = level_button.instantiate() as SLevelButton
+		lvl_btn.init(level, 1)
 		$Control/LevelGrid.add_child(lvl_btn)
