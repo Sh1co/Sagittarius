@@ -32,7 +32,7 @@ func _input(event):
 
 
 func _physics_process(delta):
-	_movement(delta)
+	movement(delta)
 
 
 func change_health(change):
@@ -42,7 +42,7 @@ func change_health(change):
 		emit_signal("player_died")
 
 
-func _movement(delta):
+func movement(delta):
 	match movement_type:
 		MovementType.DIRECTIONAL_INPUT:
 			_directional_input_movement(delta)
