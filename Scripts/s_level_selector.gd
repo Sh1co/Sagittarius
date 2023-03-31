@@ -2,6 +2,7 @@ class_name SLevelSelector
 extends SLevel
 
 @export var levels: Array[String]
+signal go_to_level(id)
 @export var level_button: PackedScene
 
 
@@ -15,3 +16,6 @@ func _create_Level_Grid():
 		var lvl_btn = level_button.instantiate() as SLevelButton
 		lvl_btn.init(level, 1)
 		$Control/LevelGrid.add_child(lvl_btn)
+func _on_level_selected(id):
+	emit_signal("go_to_level",id)
+	print(id)
