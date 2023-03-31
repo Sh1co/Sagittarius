@@ -1,6 +1,11 @@
-name: Linting
-on: [push]
 name: Linting and Formatting 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
   Lint:
     runs-on: ubuntu-22.04
