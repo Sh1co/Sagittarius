@@ -1,5 +1,7 @@
 # Sagittarius
 
+[![Linting and Formatting](https://github.com/Sh1co/Project-S/actions/workflows/lint_and_format.yml/badge.svg)](https://github.com/Sh1co/Project-S/actions/workflows/lint_and_format.yml)
+
 Sagittarius is a game development framework for the Godot engine, optimized for top-down 2D games. It offers powerful features for streamlining game development and creating immersive games quickly and efficiently.
 
 ## Getting started
