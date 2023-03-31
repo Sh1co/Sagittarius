@@ -1,5 +1,6 @@
 name: Linting
 on: [push]
+name: Linting and Formatting 
 jobs:
   Lint:
     runs-on: ubuntu-22.04
@@ -16,3 +17,18 @@ jobs:
       - name: Check linting with gdlint
         run: |
           gdlint .
+  Format:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11.1"
+      - name: Install gdtoolkit
+        run: |
+          python -m pip install --upgrade pip
+          pip install "gdtoolkit==4.*"
+      - name: Check linting with gdlint
+        run: |
+          gdformat .
