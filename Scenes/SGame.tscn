@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://be2db6ctq4hb8"]
+[gd_scene load_steps=6 format=3 uid="uid://be2db6ctq4hb8"]
 
 [ext_resource type="Script" path="res://Scripts/s_game.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://befxen5oua5ar" path="res://Scenes/SMainMenu.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bpvfvjyqdxab7" path="res://Scenes/SLevelSelector.tscn" id="3_6ufs3"]
 [ext_resource type="PackedScene" uid="uid://ciyped0xtfru2" path="res://Scenes/SGamePlayLevel.tscn" id="3_fc20s"]
 [ext_resource type="PackedScene" path="res://Scenes/SCoinsManager.tscn" id="4"]
 
 [node name="SGame" type="Node2D"]
 script = ExtResource("2")
 s_main_menu = ExtResource("3")
+s_level_selector = ExtResource("3_6ufs3")
 levels = Array[PackedScene]([ExtResource("3_fc20s"), ExtResource("3_fc20s")])
 s_coins_manager = ExtResource("4")
