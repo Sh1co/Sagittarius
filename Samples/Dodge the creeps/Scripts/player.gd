@@ -7,7 +7,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 
 
-func _movement(delta):
+func movement(delta):
 	super.movement(delta)
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
