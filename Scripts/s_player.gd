@@ -37,6 +37,7 @@ func _input(event):
 func _physics_process(delta):
 	movement(delta)
 
+
 func change_health(change):
 	health += change
 	emit_signal("health_changed", health)
@@ -100,7 +101,7 @@ func _click_and_move_movement():
 func _update_velocity():
 	velocity.x = clamp(velocity.x, -top_speed.x, top_speed.x)
 	velocity.y = clamp(velocity.y, -top_speed.y, top_speed.y)
-	
+
 	if lock_to_screen:
 		if (velocity.x > 0 && position.x >= screen_size.x) || (velocity.x < 0 && position.x <= 0):
 			velocity.x = 0
