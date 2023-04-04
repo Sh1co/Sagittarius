@@ -20,3 +20,4 @@ offset_bottom = 374.0
 text = "All levels"
 
 [connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="AllLevels" to="." method="_on_all_levels_pressed"]
