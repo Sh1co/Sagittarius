@@ -8,7 +8,7 @@ func _ready():
 
 
 func _movement(delta):
-	super._movement(delta)
+	super.movement(delta)
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
