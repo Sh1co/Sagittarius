@@ -11,6 +11,7 @@ enum MovementType {
 
 @export var health = 100
 @export var movement_type: MovementType = MovementType.DIRECTIONAL_INPUT
+@export var lock_to_screen = true
 @export var top_speed = Vector2(450, 450)
 @export var acceleration = Vector2(450, 450)
 @export var deceleration = Vector2(600, 600)
@@ -19,11 +20,13 @@ enum MovementType {
 var velocity = Vector2.ZERO
 var enemy_mask = 1 << 2
 var enemy_group = "Enemy"
+var screen_size
 @onready var target = position
 
 
 func _ready():
 	_add_shooter()
+	screen_size = get_viewport_rect().size
 
 
 func _input(event):
@@ -33,7 +36,6 @@ func _input(event):
 
 func _physics_process(delta):
 	movement(delta)
-
 
 func change_health(change):
 	health += change
@@ -96,10 +98,14 @@ func _click_and_move_movement():
 
 
 func _update_velocity():
-	print(velocity)
 	velocity.x = clamp(velocity.x, -top_speed.x, top_speed.x)
 	velocity.y = clamp(velocity.y, -top_speed.y, top_speed.y)
-
+	
+	if lock_to_screen:
+		if (velocity.x > 0 && position.x >= screen_size.x) || (velocity.x < 0 && position.x <= 0):
+			velocity.x = 0
+		if (velocity.y > 0 && position.y >= screen_size.y) || (velocity.y < 0 && position.y <= 0):
+			velocity.y = 0
 	linear_velocity = velocity
 
 
