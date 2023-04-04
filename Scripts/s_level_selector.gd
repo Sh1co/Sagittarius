@@ -10,10 +10,10 @@ var _levels: Array[String]
 
 func init(levels: Array[String]):
 	_levels = levels
-	_create_Level_Grid()
+	_create_level_grid()
 
 
-func _create_Level_Grid():
+func _create_level_grid():
 	for ind in _levels.size():
 		var lvl_btn = level_button.instantiate() as SLevelButton
 		lvl_btn.init(_levels[ind], ind)
