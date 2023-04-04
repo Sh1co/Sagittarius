@@ -21,6 +21,7 @@ color = Color(0.219608, 0.372549, 0.380392, 1)
 position = Vector2(244, 409)
 
 [node name="ScoreTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="ScoreLabel" type="Label" parent="."]
 offset_left = 155.0
