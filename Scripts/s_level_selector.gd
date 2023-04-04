@@ -8,7 +8,7 @@ signal go_to_level(id)
 var _levels: Array[String]
 
 
-func init(levels):
+func init(levels: Array[String]):
 	_levels = levels
 	_create_Level_Grid()
 
@@ -24,3 +24,9 @@ func _create_Level_Grid():
 func _on_level_selected(id):
 	emit_signal("go_to_level", id)
 	print(id)
+	queue_free()
+
+
+func _on_back_pressed():
+	emit_signal("go_to_level", -1)
+	queue_free()

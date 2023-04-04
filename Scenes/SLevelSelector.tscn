@@ -36,3 +36,14 @@ offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 4
+
+[node name="Back" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 39.0
+offset_right = 151.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 20
+text = "Back"
+
+[connection signal="pressed" from="Control/Back" to="." method="_on_back_pressed"]
