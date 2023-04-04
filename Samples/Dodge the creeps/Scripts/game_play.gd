@@ -2,6 +2,7 @@ extends SGamePlayLevel
 
 var score = 0
 
+
 func _add_health_bar():
 	pass
 
