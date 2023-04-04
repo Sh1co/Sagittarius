@@ -2,6 +2,7 @@ class_name SGame
 extends Node2D
 
 @export var s_main_menu: PackedScene
+@export var s_level_selector: PackedScene
 @export var levels: Array[PackedScene]
 @export var s_coins_manager: PackedScene
 var current_level_index = -1
@@ -28,8 +29,9 @@ func _load_main_menu():
 	if s_main_menu == null:
 		_on_level_complete()
 		return
-	var main_menu = s_main_menu.instantiate()
+	var main_menu = s_main_menu.instantiate() as SMainMenu
 	main_menu.level_completed.connect(_on_level_complete.bind())
+	main_menu.level_selector.connect(_load_level_selector.bind())
 	main_menu.coins_manager = coins_manager
 	call_deferred("add_child", main_menu)
 
@@ -51,9 +53,34 @@ func _on_levels_start():
 	_load_level(current_level_index)
 
 
+func _load_level_selector():
+	if s_level_selector == null:
+		_load_main_menu()
+		return
+	var level_selector = s_level_selector.instantiate() as SLevelSelector
+	level_selector.init(_get_names(levels))
+	level_selector.go_to_level.connect(_go_to_level.bind())
+	call_deferred("add_child", level_selector)
+
+
+func _go_to_level(index):
+	current_level_index = index
+	if index == -1:
+		_load_main_menu()
+		return
+	_load_level(index)
+
+
 func _add_coins_manager():
 	if s_coins_manager == null:
 		push_warning("Coins manager not added to main game node!")
 		return
 	coins_manager = s_coins_manager.instantiate() as SCoinsManager
 	add_child(coins_manager)
+
+
+func _get_names(levels):
+	var level_names = [] as Array[String]
+	for level in levels:
+		level_names.append(level.resource_path.get_file())
+	return level_names

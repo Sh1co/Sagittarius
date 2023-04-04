@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpvfvjyqdxab7"]
+
+[ext_resource type="Script" path="res://Scripts/s_level_selector.gd" id="1_ssb8r"]
+[ext_resource type="PackedScene" uid="uid://b3ni7dauy51ma" path="res://Scenes/SLevelButton.tscn" id="2_5x6ow"]
+
+[node name="SLevelSelector" type="Node2D"]
+script = ExtResource("1_ssb8r")
+level_button = ExtResource("2_5x6ow")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Level Selector"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="LevelGrid" type="GridContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 568.0
+offset_top = 78.0
+offset_right = -555.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="Back" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 39.0
+offset_right = 151.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 20
+text = "Back"
+
+[connection signal="pressed" from="Control/Back" to="." method="_on_back_pressed"]
