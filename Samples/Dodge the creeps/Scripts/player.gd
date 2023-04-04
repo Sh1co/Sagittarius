@@ -1,16 +1,8 @@
 extends SPlayer
 
-var screen_size
-
-
-func _ready():
-	screen_size = get_viewport_rect().size
-
 
 func movement(delta):
 	super.movement(delta)
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
 
 	if velocity.length() > 0:
 		$Sprite2D.play()
