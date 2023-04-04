@@ -4,6 +4,7 @@ var score = 0
 
 
 func _ready():
+	super._ready()
 	$ScoreTimer.start()
 
 
