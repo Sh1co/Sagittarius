@@ -4,7 +4,7 @@ extends SEnemy
 
 
 func _ready():
-	$Sprite2D.playing = true
+	$Sprite2D.play()
 
 
 func _movement(delta):
