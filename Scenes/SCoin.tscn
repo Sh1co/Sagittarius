@@ -5,6 +5,7 @@
 
 [node name="SCoin" instance=ExtResource("1")]
 modulate = Color(0.968627, 0.909804, 0.0392157, 1)
-collision_mask = 2
+collision_layer = 8
+collision_mask = 3
 script = ExtResource("2")
 value = 5
