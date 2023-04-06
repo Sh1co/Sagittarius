@@ -9,6 +9,8 @@ enum MovementType {
 	CLICK_AND_MOVE,
 }
 
+const INTERACTABLE_LAYER = 6
+
 @export var health = 100
 @export var movement_type: MovementType = MovementType.DIRECTIONAL_INPUT
 @export var lock_to_screen = true
@@ -16,11 +18,13 @@ enum MovementType {
 @export var acceleration = Vector2(450, 450)
 @export var deceleration = Vector2(600, 600)
 @export var s_projectile_shooter: PackedScene
+@export var interaction_radius = 80.0
 
 var velocity = Vector2.ZERO
 var enemy_mask = 1 << 2
 var enemy_group = "Enemy"
 var screen_size
+var interact_pressed = false
 @onready var target = position
 
 
@@ -32,10 +36,15 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("click"):
 		target = get_global_mouse_position()
+	if event.is_action_pressed("interact"):
+		interact_pressed = true
 
 
 func _physics_process(delta):
 	movement(delta)
+	if interact_pressed:
+		_try_interact()
+		interact_pressed = false
 
 
 func change_health(change):
@@ -116,3 +125,16 @@ func _add_shooter():
 	var shooter = s_projectile_shooter.instantiate() as SProjectileShooter
 	shooter.init([enemy_group], enemy_mask)
 	add_child(shooter)
+
+
+func _try_interact():
+	var space_state = get_world_2d().direct_space_state
+	var shape = CircleShape2D.new()
+	shape.radius = interaction_radius
+	var query = PhysicsShapeQueryParameters2D.new()
+	query.shape = shape
+	query.collision_mask = pow(2, INTERACTABLE_LAYER - 1)
+	query.transform = transform
+	var results = space_state.intersect_shape(query, 1)
+	for result in results:
+		result.collider.interact()

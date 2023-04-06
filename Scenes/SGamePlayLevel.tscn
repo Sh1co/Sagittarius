@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ciyped0xtfru2"]
+[gd_scene load_steps=10 format=3 uid="uid://ciyped0xtfru2"]
 
 [ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes/SHealthBar.tscn" id="2"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" path="res://Scenes/SFixedEnemySpawner.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://Scenes/SFixedCoinsSpawner.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="6"]
+[ext_resource type="Script" path="res://Scripts/s_interactable.gd" id="7_0aw4o"]
+[ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="8_6gbss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilra5"]
+size = Vector2(51, 50)
 
 [node name="SLevel" type="Node2D"]
 script = ExtResource("1")
@@ -39,6 +44,20 @@ offset_top = 203.0
 offset_right = 279.0
 offset_bottom = 250.0
 text = "Reset coins"
+
+[node name="SInteractable" type="StaticBody2D" parent="."]
+position = Vector2(332, 574)
+collision_layer = 32
+collision_mask = 3
+script = ExtResource("7_0aw4o")
+
+[node name="Sprite2D" type="Sprite2D" parent="SInteractable"]
+modulate = Color(0.160784, 1, 0.219608, 1)
+texture = ExtResource("8_6gbss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SInteractable"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_ilra5")
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
