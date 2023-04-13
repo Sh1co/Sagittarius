@@ -1,7 +1,6 @@
 class_name SGamePlayLevel
 extends SLevel
 
-@export var level_name: String
 @export var s_player: PackedScene
 @export var s_healthbar: PackedScene
 @export var s_enemy_spawner: PackedScene

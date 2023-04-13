@@ -14,7 +14,6 @@ size = Vector2(51, 50)
 
 [node name="SLevel" type="Node2D"]
 script = ExtResource("1")
-level_name = "Sample name"
 s_player = ExtResource("3")
 s_healthbar = ExtResource("2")
 s_enemy_spawner = ExtResource("4")
