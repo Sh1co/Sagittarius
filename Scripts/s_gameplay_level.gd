@@ -8,6 +8,7 @@ extends SLevel
 @export var s_coins_spawner: PackedScene
 @export var s_coins_counter_ui: PackedScene
 @export var level_annoucement = false
+@export var level_title_scene: NodePath
 
 var player
 var healthbar
@@ -24,7 +25,7 @@ func _ready():
 	_spawn_enemies()
 
 	_spawn_coins()
-	
+
 	_announce_level()
 
 
@@ -104,10 +105,15 @@ func _add_coins_counter():
 	else:
 		print("Coins manager was not added to game!")
 	add_child(coins_counter_ui)
-	
+
+
 func _announce_level():
+	if level_title_scene == null:
+		return
 	var tween = get_tree().create_tween()
+	var level_title = get_node(level_title_scene)
 	if level_annoucement:
-		tween.tween_property($Control/LevelTitle, "modulate:a", 1, 1)
-		tween.tween_property($Control/LevelTitle, "modulate:a", 0, 1)
-	tween.tween_callback($Control/LevelTitle.queue_free)
+		tween.tween_property(level_title, "modulate:a", 0, 0)
+		tween.tween_property(level_title, "modulate:a", 1, 1)
+		tween.tween_property(level_title, "modulate:a", 0, 1)
+	tween.tween_callback(level_title.queue_free)

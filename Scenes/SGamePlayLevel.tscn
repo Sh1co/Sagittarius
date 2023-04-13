@@ -21,6 +21,7 @@ s_enemy_spawner = ExtResource("4")
 s_coins_spawner = ExtResource("5")
 s_coins_counter_ui = ExtResource("6")
 level_annoucement = true
+level_title_scene = NodePath("Control/LevelTitle")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
