@@ -1,11 +1,13 @@
 class_name SGamePlayLevel
 extends SLevel
 
+@export var level_name: String
 @export var s_player: PackedScene
 @export var s_healthbar: PackedScene
 @export var s_enemy_spawner: PackedScene
 @export var s_coins_spawner: PackedScene
 @export var s_coins_counter_ui: PackedScene
+@export var level_annoucement = false
 
 var player
 var healthbar
@@ -22,6 +24,8 @@ func _ready():
 	_spawn_enemies()
 
 	_spawn_coins()
+	
+	_announce_level()
 
 
 func change_player_health(change):
@@ -100,3 +104,10 @@ func _add_coins_counter():
 	else:
 		print("Coins manager was not added to game!")
 	add_child(coins_counter_ui)
+	
+func _announce_level():
+	var tween = get_tree().create_tween()
+	if level_annoucement:
+		tween.tween_property($Control/LevelTitle, "modulate:a", 1, 1)
+		tween.tween_property($Control/LevelTitle, "modulate:a", 0, 1)
+	tween.tween_callback($Control/LevelTitle.queue_free)
