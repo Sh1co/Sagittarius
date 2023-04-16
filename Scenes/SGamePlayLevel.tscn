@@ -19,6 +19,32 @@ s_healthbar = ExtResource("2")
 s_enemy_spawner = ExtResource("4")
 s_coins_spawner = ExtResource("5")
 s_coins_counter_ui = ExtResource("6")
+level_annoucement = true
+level_title_scene = NodePath("Control/LevelTitle")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+
+[node name="LevelTitle" type="Label" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -136.5
+offset_right = 3.0
+offset_bottom = -78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Level Title"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(105, 342)

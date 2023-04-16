@@ -4,6 +4,8 @@ extends Node2D
 signal level_completed
 signal level_failed
 
+@export var level_name: String
+
 var coins_manager: SCoinsManager
 
 
