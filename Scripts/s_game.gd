@@ -1,17 +1,17 @@
 class_name SGame
 extends Node2D
 
+const LEVEL_INDEX_KEY = "level_index"
+const GAME_PROGRESS_KEY = "game_progress"
+
 @export var s_main_menu: PackedScene
 @export var s_level_selector: PackedScene
 @export var levels: Array[PackedScene]
 @export var s_coins_manager: PackedScene
 @export var save_level_progress = false
+
 var current_level_index = -1
-
 var coins_manager: SCoinsManager
-
-var LEVEL_INDEX_KEY = "level_index"
-var GAME_PROGRESS_KEY = "game_progress"
 
 
 func _ready():

@@ -3,12 +3,13 @@ extends SLevel
 
 signal go_to_level(id)
 
-@export var level_button: PackedScene
+const GAME_PROGRESS_KEY = "game_progress"
 
-var GAME_PROGRESS_KEY = "game_progress"
+@export var level_button: PackedScene
 
 var _levels: Array[String]
 var _lock_unfinished = false
+
 
 func init(levels: Array[String], lock_unfinished: bool):
 	_levels = levels
