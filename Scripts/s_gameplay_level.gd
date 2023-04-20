@@ -111,6 +111,7 @@ func _announce_level():
 		return
 	var tween = get_tree().create_tween()
 	var level_title = get_node(level_title_scene)
+	level_title.text = level_name
 	if level_annoucement:
 		tween.tween_property(level_title, "modulate:a", 0, 0)
 		tween.tween_property(level_title, "modulate:a", 1, 1)
