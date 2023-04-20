@@ -67,7 +67,7 @@ func _load_level_selector():
 		_load_main_menu()
 		return
 	var level_selector = s_level_selector.instantiate() as SLevelSelector
-	level_selector.init(_get_names(levels))
+	level_selector.init(_get_names(levels), save_level_progress)
 	level_selector.go_to_level.connect(_go_to_level.bind())
 	call_deferred("add_child", level_selector)
 
@@ -77,6 +77,9 @@ func _go_to_level(index):
 	if index == -1:
 		_load_main_menu()
 		return
+	if save_level_progress:
+		GBS.set_var(LEVEL_INDEX_KEY, current_level_index)
+		GBS.set_var(GAME_PROGRESS_KEY, max(current_level_index, GBS.get_var(GAME_PROGRESS_KEY, 0)))
 	_load_level(index)
 
 
