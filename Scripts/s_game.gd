@@ -5,12 +5,18 @@ extends Node2D
 @export var s_level_selector: PackedScene
 @export var levels: Array[PackedScene]
 @export var s_coins_manager: PackedScene
+@export var save_level_progress = false
 var current_level_index = -1
 
 var coins_manager: SCoinsManager
 
+var LEVEL_INDEX_KEY = "level_index"
+var GAME_PROGRESS_KEY = "game_progress"
+
 
 func _ready():
+	if save_level_progress:
+		current_level_index = GBS.get_var(LEVEL_INDEX_KEY, 0) - 1
 	_add_coins_manager()
 	_load_main_menu()
 
@@ -42,6 +48,9 @@ func _reload_current_level():
 
 func _on_level_complete():
 	current_level_index += 1
+	if save_level_progress:
+		GBS.set_var(LEVEL_INDEX_KEY, current_level_index)
+		GBS.set_var(GAME_PROGRESS_KEY, max(current_level_index, GBS.get_var(GAME_PROGRESS_KEY, 0)))
 	if current_level_index >= levels.size():
 		current_level_index = -1
 		_load_main_menu()
