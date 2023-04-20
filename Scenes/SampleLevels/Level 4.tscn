@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://duuljo7llgyk"]
+
+[ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_551hd"]
+[ext_resource type="PackedScene" uid="uid://ddj1b46vb83da" path="res://Scenes/SPlayer.tscn" id="2_f7t5c"]
+[ext_resource type="PackedScene" path="res://Scenes/SHealthBar.tscn" id="3_e0127"]
+[ext_resource type="PackedScene" path="res://Scenes/SFixedEnemySpawner.tscn" id="4_cdq8d"]
+[ext_resource type="PackedScene" path="res://Scenes/SFixedCoinsSpawner.tscn" id="5_n8u0x"]
+[ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="6_7txlt"]
+[ext_resource type="Script" path="res://Scripts/s_interactable.gd" id="7_ugr4d"]
+[ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="8_foi7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilra5"]
+size = Vector2(51, 50)
+
+[node name="SLevel" type="Node2D"]
+script = ExtResource("1_551hd")
+s_player = ExtResource("2_f7t5c")
+s_healthbar = ExtResource("3_e0127")
+s_enemy_spawner = ExtResource("4_cdq8d")
+s_coins_spawner = ExtResource("5_n8u0x")
+s_coins_counter_ui = ExtResource("6_7txlt")
+level_annoucement = true
+level_title_scene = NodePath("Control/LevelTitle")
+level_name = "Level 4"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+
+[node name="LevelTitle" type="Label" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -136.5
+offset_right = 3.0
+offset_bottom = -78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Level Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(105, 342)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 129.0
+offset_top = 87.0
+offset_right = 275.0
+offset_bottom = 130.0
+text = "Complete Level"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 130.0
+offset_top = 144.0
+offset_right = 276.0
+offset_bottom = 191.0
+text = "Damage Player"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 133.0
+offset_top = 203.0
+offset_right = 279.0
+offset_bottom = 250.0
+text = "Reset coins"
+
+[node name="SInteractable" type="StaticBody2D" parent="."]
+position = Vector2(332, 574)
+collision_layer = 32
+collision_mask = 3
+script = ExtResource("7_ugr4d")
+
+[node name="Sprite2D" type="Sprite2D" parent="SInteractable"]
+modulate = Color(0.160784, 1, 0.219608, 1)
+texture = ExtResource("8_foi7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SInteractable"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_ilra5")
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
