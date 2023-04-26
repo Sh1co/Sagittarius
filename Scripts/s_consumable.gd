@@ -4,16 +4,16 @@ extends Node
 const CONSUMABLES_KEY = "consumable/"
 
 @export var consumable_name = ""
-@export var initCount = 5
-@export var saveCount = false
+@export var init_count = 5
+@export var save_count = false
 var count = 0
 
 
 func _ready():
-	if !saveCount:
-		count = initCount
+	if !save_count:
+		count = init_count
 	else:
-		count = GBS.get_var(CONSUMABLES_KEY + consumable_name, initCount)
+		count = GBS.get_var(CONSUMABLES_KEY + consumable_name, init_count)
 
 
 func consume():
@@ -21,7 +21,7 @@ func consume():
 		print(consumable_name + " not consumed! " + str(count) + " remaining.")
 		return false
 	count -= 1
-	if saveCount:
+	if save_count:
 		GBS.set_var(CONSUMABLES_KEY + consumable_name, count)
 	print(consumable_name + " consumed! " + str(count) + " remaining.")
 	return true
@@ -29,5 +29,5 @@ func consume():
 
 func add(amount):
 	count += amount
-	if saveCount:
+	if save_count:
 		GBS.set_var(CONSUMABLES_KEY + consumable_name, count)
