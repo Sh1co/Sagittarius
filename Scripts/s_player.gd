@@ -26,8 +26,8 @@ var enemy_mask = 1 << 2
 var enemy_group = "Enemy"
 var screen_size
 var interact_pressed = false
-@onready var target = position
 var health_consumable
+@onready var target = position
 
 
 func _ready():
