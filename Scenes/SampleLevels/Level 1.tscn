@@ -72,6 +72,14 @@ offset_right = 279.0
 offset_bottom = 250.0
 text = "Reset coins"
 
+[node name="Button4" type="Button" parent="."]
+offset_left = 134.0
+offset_top = 266.0
+offset_right = 280.0
+offset_bottom = 313.0
+text = "Reset health 
+consumables"
+
 [node name="SInteractable" type="StaticBody2D" parent="."]
 position = Vector2(332, 574)
 collision_layer = 32
@@ -89,3 +97,4 @@ shape = SubResource("RectangleShape2D_ilra5")
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_health_consumable_reset_pressed"]

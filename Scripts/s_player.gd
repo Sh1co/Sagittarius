@@ -19,17 +19,20 @@ const INTERACTABLE_LAYER = 6
 @export var deceleration = Vector2(600, 600)
 @export var s_projectile_shooter: PackedScene
 @export var interaction_radius = 80.0
+@export var s_health_consumable: PackedScene
 
 var velocity = Vector2.ZERO
 var enemy_mask = 1 << 2
 var enemy_group = "Enemy"
 var screen_size
 var interact_pressed = false
+var health_consumable
 @onready var target = position
 
 
 func _ready():
 	_add_shooter()
+	_init_health_consumable()
 	screen_size = get_viewport_rect().size
 
 
@@ -38,6 +41,8 @@ func _input(event):
 		target = get_global_mouse_position()
 	if event.is_action_pressed("interact"):
 		interact_pressed = true
+	if event.is_action_pressed("consume_1"):
+		health_consumable.consume()
 
 
 func _physics_process(delta):
@@ -138,3 +143,8 @@ func _try_interact():
 	var results = space_state.intersect_shape(query, 1)
 	for result in results:
 		result.collider.interact()
+
+
+func _init_health_consumable():
+	health_consumable = s_health_consumable.instantiate() as SHealthConsumable
+	add_child(health_consumable)

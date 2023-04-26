@@ -117,3 +117,7 @@ func _announce_level():
 		tween.tween_property(level_title, "modulate:a", 1, 1)
 		tween.tween_property(level_title, "modulate:a", 0, 1)
 	tween.tween_callback(level_title.queue_free)
+
+
+func _on_health_consumable_reset_pressed():
+	player.health_consumable.add(5)
