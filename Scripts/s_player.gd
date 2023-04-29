@@ -42,7 +42,8 @@ func _input(event):
 	if event.is_action_pressed("interact"):
 		interact_pressed = true
 	if event.is_action_pressed("consume_1"):
-		health_consumable.consume()
+		if health_consumable != null:
+			health_consumable.consume()
 
 
 func _physics_process(delta):
@@ -146,5 +147,6 @@ func _try_interact():
 
 
 func _init_health_consumable():
-	health_consumable = s_health_consumable.instantiate() as SHealthConsumable
-	add_child(health_consumable)
+	if s_health_consumable != null:
+		health_consumable = s_health_consumable.instantiate() as SHealthConsumable
+		add_child(health_consumable)
