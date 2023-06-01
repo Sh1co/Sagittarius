@@ -2,6 +2,7 @@ class_name SGamePlayLevel
 extends SLevel
 
 @export var s_player: PackedScene
+@export var player_start_pos: Node2D
 @export var s_healthbar: PackedScene
 @export var s_enemy_spawner: PackedScene
 @export var s_coins_spawner: PackedScene
@@ -80,7 +81,7 @@ func _spawn_player():
 	if s_player == null:
 		return
 	player = s_player.instantiate() as SPlayer
-	player.position = $StartPosition.position
+	player.position = player_start_pos.position
 	player.connect("player_died", Callable(self, "player_died"))
 	add_child(player)
 
@@ -107,11 +108,11 @@ func _add_coins_counter():
 
 
 func _announce_level():
-	if level_title_scene == null:
-		return
-	var tween = get_tree().create_tween()
 	var level_title = get_node(level_title_scene)
+	if level_title == null:
+		return
 	level_title.text = level_name
+	var tween = get_tree().create_tween()
 	if level_annoucement:
 		tween.tween_property(level_title, "modulate:a", 0, 0)
 		tween.tween_property(level_title, "modulate:a", 1, 1)

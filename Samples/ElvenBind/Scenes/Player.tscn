@@ -60,7 +60,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(31.25, 50.25)
+size = Vector2(16, 27.0625)
 
 [node name="Player" type="RigidBody2D" groups=["Player"]]
 collision_layer = 2
@@ -73,17 +73,26 @@ deceleration = Vector2(900, 900)
 s_projectile_shooter = ExtResource("2_pjhfg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 2)
-scale = Vector2(2.48438, 2.48438)
+position = Vector2(3.78124, -6.61717)
+scale = Vector2(1.40235, 1.40235)
 sprite_frames = SubResource("SpriteFrames_yy6gj")
 animation = &"idle"
 frame_progress = 0.291848
 script = ExtResource("11_v2e5r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 14)
+position = Vector2(3, 0.53125)
 shape = SubResource("1")
 
 [node name="ShootingCooldown" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.75
+drag_top_margin = 0.75
+drag_right_margin = 0.75
+drag_bottom_margin = 0.75
