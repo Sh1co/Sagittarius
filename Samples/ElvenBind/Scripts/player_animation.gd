@@ -6,7 +6,7 @@ func _ready():
 	play()
 
 
-func _process(delta):
+func _process(_delta):
 	var player_velocity: Vector2 = $"..".linear_velocity
 
 	if player_velocity.length() > 0:
