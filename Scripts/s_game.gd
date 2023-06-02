@@ -9,12 +9,15 @@ const GAME_PROGRESS_KEY = "game_progress"
 @export var levels: Array[PackedScene]
 @export var s_coins_manager: PackedScene
 @export var save_level_progress = false
+@export var procedural_generated = false
 
 var current_level_index = -1
 var coins_manager: SCoinsManager
 
 
 func _ready():
+	if procedural_generated:
+		save_level_progress = false
 	if save_level_progress:
 		current_level_index = GBS.get_var(LEVEL_INDEX_KEY, 0) - 1
 	_add_coins_manager()
@@ -27,6 +30,9 @@ func _load_level(index):
 	level.position = Vector2.ZERO
 	level.level_completed.connect(_on_level_complete.bind())
 	level.level_failed.connect(_reload_current_level.bind())
+	if procedural_generated:
+		level.game_complete.connect(_procedural_game_compelete.bind())
+		level.generate()
 	level.coins_manager = coins_manager
 	call_deferred("add_child", level)
 
@@ -52,10 +58,17 @@ func _on_level_complete():
 		GBS.set_var(LEVEL_INDEX_KEY, current_level_index)
 		GBS.set_var(GAME_PROGRESS_KEY, max(current_level_index, GBS.get_var(GAME_PROGRESS_KEY, 0)))
 	if current_level_index >= levels.size():
-		current_level_index = -1
-		_load_main_menu()
-		return
+		if !procedural_generated:
+			current_level_index = -1
+			_load_main_menu()
+			return
+		current_level_index = 0
 	_load_level(current_level_index)
+
+
+func _procedural_game_compelete():
+	current_level_index = -1
+	_load_main_menu()
 
 
 func _on_levels_start():

@@ -12,9 +12,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilra5"]
 size = Vector2(51, 50)
 
-[node name="SLevel" type="Node2D"]
+[node name="SLevel" type="Node2D" node_paths=PackedStringArray("player_start_pos")]
 script = ExtResource("1")
 s_player = ExtResource("3")
+player_start_pos = NodePath("StartPosition")
 s_healthbar = ExtResource("2")
 s_enemy_spawner = ExtResource("4")
 s_coins_spawner = ExtResource("5")
