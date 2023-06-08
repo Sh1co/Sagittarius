@@ -1,13 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5xagvjnowsyw"]
+[gd_scene load_steps=15 format=3 uid="uid://c5xagvjnowsyw"]
 
 [ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_xc0xk"]
 [ext_resource type="PackedScene" uid="uid://dqag3vojartac" path="res://Samples/Tetra Force/Scenes/Player.tscn" id="2_ik4ky"]
 [ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Scenes/SHealthBar.tscn" id="3_r5hri"]
 [ext_resource type="PackedScene" uid="uid://dctmdurgiyp1e" path="res://Samples/Tetra Force/Scenes/Areas/Spawners/CoinsSpawnerA1.tscn" id="4_d7mhe"]
-[ext_resource type="PackedScene" uid="uid://b3ni7dauy51ma" path="res://Scenes/SLevelButton.tscn" id="6_q4f41"]
+[ext_resource type="Script" path="res://Samples/Tetra Force/Scripts/inventory.gd" id="6_65rfe"]
 [ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="6_tw7sc"]
 [ext_resource type="Texture2D" uid="uid://2p0dbi7iex2l" path="res://Samples/Tetra Force/Art/Pond-of-Happiness.png" id="7_3w8pw"]
 [ext_resource type="Script" path="res://Scripts/s_interactable.gd" id="7_mppxq"]
+[ext_resource type="PackedScene" uid="uid://dby3w6b1lojd" path="res://Samples/Tetra Force/Scenes/Sword.tscn" id="7_w7he6"]
+[ext_resource type="PackedScene" uid="uid://ch0o71kfah45v" path="res://Samples/Tetra Force/Scenes/Axe.tscn" id="8_8f110"]
+[ext_resource type="PackedScene" uid="uid://8g0nkoory1mm" path="res://Samples/Tetra Force/Scenes/InventoryItem.tscn" id="8_8vynl"]
 [ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="8_xgmr6"]
 [ext_resource type="PackedScene" uid="uid://b2nmry8kycf6j" path="res://Samples/Tetra Force/Scenes/MovableCrate.tscn" id="9_e7yma"]
 
@@ -76,21 +79,25 @@ offset_right = 279.0
 offset_bottom = 250.0
 text = "Reset coins"
 
-[node name="Control2" type="Control" parent="CanvasLayer"]
+[node name="Inventory" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -304.0
-offset_top = -354.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_left = -319.0
+offset_top = -367.0
+offset_right = -19.0
+offset_bottom = -17.0
 grow_horizontal = 0
 grow_vertical = 0
+script = ExtResource("6_65rfe")
+items = Array[PackedScene]([ExtResource("7_w7he6"), ExtResource("8_8f110")])
+inventory_item_button = ExtResource("8_8vynl")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control2"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventory"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,65 +106,28 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.509804, 0.509804, 0.509804, 0.521569)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control2"]
+[node name="Scroll" type="ScrollContainer" parent="CanvasLayer/Inventory"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -135.0
-offset_top = 46.0
-offset_right = 138.0
-offset_bottom = 345.0
+offset_left = -119.0
+offset_top = 43.0
+offset_right = 127.0
+offset_bottom = 342.0
 grow_horizontal = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control2/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Inventory/Scroll"]
 layout_mode = 2
 
-[node name="SLevelOption" parent="CanvasLayer/Control2/ScrollContainer/VBoxContainer" instance=ExtResource("6_q4f41")]
+[node name="Button" type="Button" parent="CanvasLayer/Inventory/Scroll/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 2
+text = "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
 
-[node name="Button" type="Button" parent="CanvasLayer/Control2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-
-[node name="Button2" type="Button" parent="CanvasLayer/Control2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-
-[node name="Button3" type="Button" parent="CanvasLayer/Control2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-
-[node name="Button4" type="Button" parent="CanvasLayer/Control2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-
-[node name="Button5" type="Button" parent="CanvasLayer/Control2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-
-[node name="Button6" type="Button" parent="CanvasLayer/Control2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-
-[node name="Button7" type="Button" parent="CanvasLayer/Control2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-
-[node name="Button8" type="Button" parent="CanvasLayer/Control2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-
-[node name="Button9" type="Button" parent="CanvasLayer/Control2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-
-[node name="Button10" type="Button" parent="CanvasLayer/Control2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-
-[node name="Label" type="Label" parent="CanvasLayer/Control2"]
+[node name="Label" type="Label" parent="CanvasLayer/Inventory"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
