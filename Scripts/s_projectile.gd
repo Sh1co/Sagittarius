@@ -9,10 +9,10 @@ var launch_velocity = Vector2.ZERO
 
 
 func _physics_process(delta):
-	_movement(delta)
+	movement(delta)
 
 
-func _movement(delta):
+func movement(delta):
 	var velocity = Vector2.UP.rotated(rotation) * speed + launch_velocity
 	position += velocity * delta
 

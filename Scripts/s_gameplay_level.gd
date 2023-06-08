@@ -92,7 +92,7 @@ func _add_health_bar():
 	healthbar = s_healthbar.instantiate() as SHealthBar
 	healthbar.init(player.health, player.health)
 	player.connect("health_changed", Callable(healthbar, "health_changed"))
-	add_child(healthbar)
+	$CanvasLayer.add_child(healthbar)
 
 
 func _add_coins_counter():
@@ -104,7 +104,7 @@ func _add_coins_counter():
 		coins_counter_ui.coins_updated(coins_manager.get_coins())
 	else:
 		print("Coins manager was not added to game!")
-	add_child(coins_counter_ui)
+	$CanvasLayer.add_child(coins_counter_ui)
 
 
 func _announce_level():

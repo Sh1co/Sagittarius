@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://befxen5oua5ar" path="res://Scenes/SMainMenu.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bpvfvjyqdxab7" path="res://Scenes/SLevelSelector.tscn" id="3_6ufs3"]
 [ext_resource type="PackedScene" path="res://Scenes/SCoinsManager.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://lcje2upjk3oy" path="res://Scenes/SampleLevels/Level 1.tscn" id="4_7f66q"]
-[ext_resource type="PackedScene" uid="uid://bxh1s0xor8a2r" path="res://Scenes/SampleLevels/Level 2.tscn" id="5_vwf4v"]
-[ext_resource type="PackedScene" uid="uid://bdj33pec8oqtw" path="res://Scenes/SampleLevels/Level 3.tscn" id="6_4cpl3"]
-[ext_resource type="PackedScene" uid="uid://duuljo7llgyk" path="res://Scenes/SampleLevels/Level 4.tscn" id="7_dfn5q"]
+[ext_resource type="PackedScene" uid="uid://dtoerk4c7561p" path="res://Scenes/SampleLevels/Level 1.tscn" id="4_7f66q"]
+[ext_resource type="PackedScene" uid="uid://ibeghuy000l0" path="res://Scenes/SampleLevels/Level 2.tscn" id="5_vwf4v"]
+[ext_resource type="PackedScene" uid="uid://dp7kxw8eqwecg" path="res://Scenes/SampleLevels/Level 3.tscn" id="6_4cpl3"]
+[ext_resource type="PackedScene" uid="uid://bbn5kmtm0lakl" path="res://Scenes/SampleLevels/Level 4.tscn" id="7_dfn5q"]
 
 [node name="SGame" type="Node2D"]
 script = ExtResource("2")

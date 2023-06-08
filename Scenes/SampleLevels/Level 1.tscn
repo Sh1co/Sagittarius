@@ -1,35 +1,38 @@
-[gd_scene load_steps=10 format=3 uid="uid://lcje2upjk3oy"]
+[gd_scene load_steps=10 format=3 uid="uid://dtoerk4c7561p"]
 
-[ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_lij62"]
-[ext_resource type="PackedScene" uid="uid://ddj1b46vb83da" path="res://Scenes/SPlayer.tscn" id="2_me5go"]
-[ext_resource type="PackedScene" path="res://Scenes/SHealthBar.tscn" id="3_adguw"]
-[ext_resource type="PackedScene" path="res://Scenes/SFixedEnemySpawner.tscn" id="4_ghw2e"]
-[ext_resource type="PackedScene" path="res://Scenes/SFixedCoinsSpawner.tscn" id="5_gcutq"]
-[ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="6_x1ehh"]
-[ext_resource type="Script" path="res://Scripts/s_interactable.gd" id="7_826t0"]
-[ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="8_wwd4n"]
+[ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_52r4l"]
+[ext_resource type="PackedScene" uid="uid://ddj1b46vb83da" path="res://Scenes/SPlayer.tscn" id="2_0u72u"]
+[ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Scenes/SHealthBar.tscn" id="3_cve5y"]
+[ext_resource type="PackedScene" path="res://Scenes/SFixedEnemySpawner.tscn" id="4_i7ep4"]
+[ext_resource type="PackedScene" path="res://Scenes/SFixedCoinsSpawner.tscn" id="5_dvl6d"]
+[ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="6_gs2uq"]
+[ext_resource type="Script" path="res://Scripts/s_interactable.gd" id="7_prqls"]
+[ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="8_kd8mn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilra5"]
 size = Vector2(51, 50)
 
-[node name="SLevel" type="Node2D"]
-script = ExtResource("1_lij62")
-s_player = ExtResource("2_me5go")
-s_healthbar = ExtResource("3_adguw")
-s_enemy_spawner = ExtResource("4_ghw2e")
-s_coins_spawner = ExtResource("5_gcutq")
-s_coins_counter_ui = ExtResource("6_x1ehh")
+[node name="SLevel" type="Node2D" node_paths=PackedStringArray("player_start_pos")]
+script = ExtResource("1_52r4l")
+s_player = ExtResource("2_0u72u")
+player_start_pos = NodePath("StartPosition")
+s_healthbar = ExtResource("3_cve5y")
+s_enemy_spawner = ExtResource("4_i7ep4")
+s_coins_spawner = ExtResource("5_dvl6d")
+s_coins_counter_ui = ExtResource("6_gs2uq")
 level_annoucement = true
-level_title_scene = NodePath("Control/LevelTitle")
+level_title_scene = NodePath("CanvasLayer/Control/LevelTitle")
 level_name = "Level 1"
 
-[node name="Control" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 647.0
 
-[node name="LevelTitle" type="Label" parent="Control"]
+[node name="LevelTitle" type="Label" parent="CanvasLayer/Control"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 14
@@ -47,10 +50,7 @@ text = "Level Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(105, 342)
-
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="CanvasLayer"]
 offset_left = 129.0
 offset_top = 87.0
 offset_right = 275.0
@@ -58,43 +58,37 @@ offset_bottom = 130.0
 text = "Complete Level"
 icon_alignment = 1
 
-[node name="Button2" type="Button" parent="."]
+[node name="Button2" type="Button" parent="CanvasLayer"]
 offset_left = 130.0
 offset_top = 144.0
 offset_right = 276.0
 offset_bottom = 191.0
 text = "Damage Player"
 
-[node name="Button3" type="Button" parent="."]
+[node name="Button3" type="Button" parent="CanvasLayer"]
 offset_left = 133.0
 offset_top = 203.0
 offset_right = 279.0
 offset_bottom = 250.0
 text = "Reset coins"
 
-[node name="Button4" type="Button" parent="."]
-offset_left = 134.0
-offset_top = 266.0
-offset_right = 280.0
-offset_bottom = 313.0
-text = "Reset health 
-consumables"
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(105, 342)
 
 [node name="SInteractable" type="StaticBody2D" parent="."]
 position = Vector2(332, 574)
 collision_layer = 32
 collision_mask = 3
-script = ExtResource("7_826t0")
+script = ExtResource("7_prqls")
 
 [node name="Sprite2D" type="Sprite2D" parent="SInteractable"]
 modulate = Color(0.160784, 1, 0.219608, 1)
-texture = ExtResource("8_wwd4n")
+texture = ExtResource("8_kd8mn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SInteractable"]
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_ilra5")
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
-[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
-[connection signal="pressed" from="Button4" to="." method="_on_health_consumable_reset_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button3" to="." method="_on_Button3_pressed"]

@@ -3,6 +3,7 @@ extends Node2D
 
 signal level_completed
 signal level_failed
+signal go_to_level(id)
 
 @export var level_name: String
 

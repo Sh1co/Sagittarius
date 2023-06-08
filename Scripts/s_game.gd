@@ -30,6 +30,7 @@ func _load_level(index):
 	level.position = Vector2.ZERO
 	level.level_completed.connect(_on_level_complete.bind())
 	level.level_failed.connect(_reload_current_level.bind())
+	level.go_to_level.connect(_go_to_level.bind())
 	if procedural_generated:
 		level.game_complete.connect(_procedural_game_compelete.bind())
 		level.generate()
