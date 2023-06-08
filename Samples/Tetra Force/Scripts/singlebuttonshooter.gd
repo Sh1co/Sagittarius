@@ -11,7 +11,8 @@ func _check_shooting(event):
 	if event.is_action_pressed("shoot"):
 		$ShootingCooldown.start()
 		_shoot_projectile(0)
-		
+
+
 func _shoot_projectile(direction):
 	if !is_initialized:
 		push_warning("Shooter not initialized. Make sure you call init on shooter!")
