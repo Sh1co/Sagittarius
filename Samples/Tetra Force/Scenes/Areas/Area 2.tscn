@@ -1,13 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1l1bnsfjqc7b"]
+[gd_scene load_steps=13 format=3 uid="uid://c1l1bnsfjqc7b"]
 
 [ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_o2ihw"]
 [ext_resource type="PackedScene" uid="uid://dqag3vojartac" path="res://Samples/Tetra Force/Scenes/Player.tscn" id="2_f7cim"]
 [ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Scenes/SHealthBar.tscn" id="3_d10lr"]
 [ext_resource type="PackedScene" uid="uid://do8xfy5jonyjs" path="res://Samples/Tetra Force/Scenes/Areas/Spawners/CoinsSpawnerA2.tscn" id="4_vnd6r"]
+[ext_resource type="PackedScene" uid="uid://b5c2fumoxlfgs" path="res://Samples/Tetra Force/Scenes/Inventory.tscn" id="6_eur7d"]
 [ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="6_pynge"]
 [ext_resource type="Script" path="res://Scripts/s_interactable.gd" id="7_mglim"]
 [ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="8_ljinc"]
 [ext_resource type="Texture2D" uid="uid://kqwtmj23qjnv" path="res://Samples/Tetra Force/Art/Link's_House.png" id="8_qlh5e"]
+[ext_resource type="PackedScene" uid="uid://b2cf5v6b76q6y" path="res://Samples/Tetra Force/Scenes/Gate.tscn" id="10_0jjma"]
+[ext_resource type="PackedScene" uid="uid://b2nmry8kycf6j" path="res://Samples/Tetra Force/Scenes/MovableCrate.tscn" id="11_42hrl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilra5"]
 size = Vector2(51, 50)
@@ -74,8 +77,10 @@ offset_right = 279.0
 offset_bottom = 250.0
 text = "Reset coins"
 
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("6_eur7d")]
+
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(229, 337)
+position = Vector2(222, 304)
 
 [node name="SInteractable" type="StaticBody2D" parent="."]
 visible = false
@@ -118,6 +123,14 @@ polygon = PackedVector2Array(-43, 28, -40.8, 47, -44, 47, -70, 48, -70, 44.9, -6
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(0, 1.186)
 polygon = PackedVector2Array(80, 24.2, 80, 31, 81.3, 40, 77.9, 40, 64, 38.8, 64, 24, 65, 24, 65, 22.8)
+
+[node name="Gate" parent="." instance=ExtResource("10_0jjma")]
+position = Vector2(229, 370)
+
+[node name="MovableCrate" parent="." instance=ExtResource("11_42hrl")]
+position = Vector2(229, 349)
+scale = Vector2(1.8, 1.13636)
+movement_size = 25
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_Button2_pressed"]

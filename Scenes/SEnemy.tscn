@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/s_enemy.gd" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(32, 31.5)
+size = Vector2(14, 37.25)
 
 [node name="SEnemy" type="RigidBody2D" groups=["Enemy"]]
 modulate = Color(0.878431, 0.0705882, 0.0705882, 1)

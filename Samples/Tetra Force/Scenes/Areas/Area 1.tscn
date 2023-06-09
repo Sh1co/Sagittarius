@@ -1,21 +1,26 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5xagvjnowsyw"]
+[gd_scene load_steps=16 format=3 uid="uid://c5xagvjnowsyw"]
 
 [ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_xc0xk"]
 [ext_resource type="PackedScene" uid="uid://dqag3vojartac" path="res://Samples/Tetra Force/Scenes/Player.tscn" id="2_ik4ky"]
 [ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Scenes/SHealthBar.tscn" id="3_r5hri"]
 [ext_resource type="PackedScene" uid="uid://dctmdurgiyp1e" path="res://Samples/Tetra Force/Scenes/Areas/Spawners/CoinsSpawnerA1.tscn" id="4_d7mhe"]
-[ext_resource type="Script" path="res://Samples/Tetra Force/Scripts/inventory.gd" id="6_65rfe"]
+[ext_resource type="PackedScene" uid="uid://b5c2fumoxlfgs" path="res://Samples/Tetra Force/Scenes/Inventory.tscn" id="6_4ve5n"]
 [ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="6_tw7sc"]
 [ext_resource type="Texture2D" uid="uid://2p0dbi7iex2l" path="res://Samples/Tetra Force/Art/Pond-of-Happiness.png" id="7_3w8pw"]
 [ext_resource type="Script" path="res://Scripts/s_interactable.gd" id="7_mppxq"]
-[ext_resource type="PackedScene" uid="uid://dby3w6b1lojd" path="res://Samples/Tetra Force/Scenes/Sword.tscn" id="7_w7he6"]
-[ext_resource type="PackedScene" uid="uid://ch0o71kfah45v" path="res://Samples/Tetra Force/Scenes/Axe.tscn" id="8_8f110"]
-[ext_resource type="PackedScene" uid="uid://8g0nkoory1mm" path="res://Samples/Tetra Force/Scenes/InventoryItem.tscn" id="8_8vynl"]
 [ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="8_xgmr6"]
 [ext_resource type="PackedScene" uid="uid://b2nmry8kycf6j" path="res://Samples/Tetra Force/Scenes/MovableCrate.tscn" id="9_e7yma"]
+[ext_resource type="PackedScene" uid="uid://b2cf5v6b76q6y" path="res://Samples/Tetra Force/Scenes/Gate.tscn" id="10_yeeiq"]
+[ext_resource type="PackedScene" uid="uid://dhoo0ab2t8xko" path="res://Samples/Tetra Force/Scenes/BreakableItem.tscn" id="11_y8y1c"]
+[ext_resource type="PackedScene" uid="uid://bxorocvap5eu7" path="res://Samples/Tetra Force/Scenes/FollowingEnemy.tscn" id="12_8vu0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilra5"]
 size = Vector2(51, 50)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_o3pim"]
+vertices = PackedVector2Array(-171, 72, -168, 46, -152, 72, -158, 76, 164, 66, 186, 42, 200, 72, 194, 145, 152, 180, -171, 143, -158, 109, -151, 72, -165, 43, -138, 67, -142, 72, -143, 110, -132, 120, -131, 140, -155, 165, -122, 181, -118, 140, -83, 175, 100, 65, 105, 180, 80, 157, -53, 13, -20, 10, 47, 12, -36, 156, -108, 66, -117, 119, -143, 109, -131, 119)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(9, 0, 3, 10), PackedInt32Array(11, 1, 12, 13, 14), PackedInt32Array(9, 10, 15, 16, 17, 18), PackedInt32Array(19, 18, 17, 20, 21), PackedInt32Array(22, 4, 8, 23, 24), PackedInt32Array(25, 26, 27, 22, 24, 28, 29), PackedInt32Array(29, 28, 21, 20, 30), PackedInt32Array(31, 14, 13, 29, 30, 32)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-83, 175, -122, 181, -155, 165, -171, 143, -171, 72, -168, 46, -152, 72, -158, 76, -158, 109, -143, 110, -132, 120, -131, 140, -118, 140, -117, 119, -131, 119, -143, 109, -142, 72, -151, 72, -168, 46, -165, 43, -138, 67, -108, 66, -53, 13, -20, 10, 47, 12, 100, 65, 164, 66, 186, 42, 200, 72, 194, 145, 152, 180, 105, 180, 80, 157, -36, 156)])
 
 [node name="SLevel" type="Node2D" node_paths=PackedStringArray("player_start_pos")]
 script = ExtResource("1_xc0xk")
@@ -79,68 +84,7 @@ offset_right = 279.0
 offset_bottom = 250.0
 text = "Reset coins"
 
-[node name="Inventory" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -319.0
-offset_top = -367.0
-offset_right = -19.0
-offset_bottom = -17.0
-grow_horizontal = 0
-grow_vertical = 0
-script = ExtResource("6_65rfe")
-items = Array[PackedScene]([ExtResource("7_w7he6"), ExtResource("8_8f110")])
-inventory_item_button = ExtResource("8_8vynl")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventory"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.509804, 0.509804, 0.509804, 0.521569)
-
-[node name="Scroll" type="ScrollContainer" parent="CanvasLayer/Inventory"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -119.0
-offset_top = 43.0
-offset_right = 127.0
-offset_bottom = 342.0
-grow_horizontal = 2
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Inventory/Scroll"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CanvasLayer/Inventory/Scroll/VBoxContainer"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 2
-text = "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
-
-[node name="Label" type="Label" parent="CanvasLayer/Inventory"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -69.5
-offset_right = 69.5
-offset_bottom = 45.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-text = "Inventory"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("6_4ve5n")]
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(200, 294)
@@ -176,7 +120,20 @@ polygon = PackedVector2Array(152, 134.5, -1, 134.5, -1, 71.6, 41, 70.4, 41, 72.6
 [node name="Left" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(1, -22.9, -7.5, -25.1, -20.4, -16.5, -24.7, -16.5, -38, -14.7, -70.2, 16.5, -89.8, 16.5, -104.5, 2.7, -110, 7.39999, -110, 14.5, -111, 57.5, -110.2, 57.5, -109.2, 69.5, -106.9, 72.5, -105.4, 72.5, -88.4, 84.5, -82.7, 84.5, -76.7, 86.5, -68.3, 86.5, -55, 84.7, -48.8, 78.5, -45.5, 78.5, -28.4, 70.5, 0, 70.5, 0, 73.5, 1, 134.5, -152, 134.5, -152, -134.5, 1, -134.5)
 
+[node name="Gate" parent="." instance=ExtResource("10_yeeiq")]
+level_index = 0
+
 [node name="MovableCrate" parent="." instance=ExtResource("9_e7yma")]
+
+[node name="FollowingEnemy" parent="." instance=ExtResource("12_8vu0q")]
+position = Vector2(371, 378)
+
+[node name="SEnemy" parent="." instance=ExtResource("11_y8y1c")]
+position = Vector2(70, 311)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(220, 218)
+navigation_polygon = SubResource("NavigationPolygon_o3pim")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_Button2_pressed"]

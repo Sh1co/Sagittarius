@@ -1,0 +1,100 @@
+[gd_scene load_steps=16 format=3 uid="uid://bxorocvap5eu7"]
+
+[ext_resource type="Script" path="res://Samples/Tetra Force/Scripts/following_enemy.gd" id="1_fo2qs"]
+[ext_resource type="Texture2D" uid="uid://dybypp6otfq3e" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/elf m/elf_m_hit_anim_f0.png" id="2_wt5dg"]
+[ext_resource type="Texture2D" uid="uid://c0d2yecmhkxav" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/orc warrior/orc_warrior_idle_anim_f0.png" id="3_ecyo3"]
+[ext_resource type="Texture2D" uid="uid://c56swpkwljmg8" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/orc warrior/orc_warrior_idle_anim_f1.png" id="4_a3oxh"]
+[ext_resource type="Texture2D" uid="uid://ba7kehl55vrvf" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/orc warrior/orc_warrior_idle_anim_f2.png" id="5_e08g1"]
+[ext_resource type="Texture2D" uid="uid://22dlun4j57n0" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/orc warrior/orc_warrior_idle_anim_f3.png" id="6_ga3it"]
+[ext_resource type="Texture2D" uid="uid://dbttotpxh2g68" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/orc warrior/orc_warrior_run_anim_f0.png" id="7_akpx2"]
+[ext_resource type="Texture2D" uid="uid://cogglrfp32tvt" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/orc warrior/orc_warrior_run_anim_f1.png" id="8_l11qp"]
+[ext_resource type="Texture2D" uid="uid://dgy8adxj2r3gi" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/orc warrior/orc_warrior_run_anim_f2.png" id="9_4x4i1"]
+[ext_resource type="Texture2D" uid="uid://bix5ix0p0u78y" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/orc warrior/orc_warrior_run_anim_f3.png" id="10_64d4k"]
+[ext_resource type="Script" path="res://Samples/Tetra Force/Scripts/enemy_animation.gd" id="11_0dchi"]
+[ext_resource type="Script" path="res://Samples/Tetra Force/Scripts/breakable_item.gd" id="12_bpbsi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wumes"]
+resource_name = "player_anim"
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wt5dg")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ecyo3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a3oxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e08g1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ga3it")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_akpx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_l11qp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4x4i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_64d4k")
+}],
+"loop": true,
+"name": &"run",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(16, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fg0t"]
+size = Vector2(9, 17)
+
+[node name="FollowingEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_fo2qs")
+movement_speed = 100.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.78124, -6.61717)
+scale = Vector2(1.40235, 1.40235)
+sprite_frames = SubResource("SpriteFrames_wumes")
+animation = &"idle"
+frame_progress = 0.555512
+script = ExtResource("11_0dchi")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 3
+max_contacts_reported = 1
+contact_monitor = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("12_bpbsi")
+health = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(6, -1.5)
+shape = SubResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, -1.5)
+shape = SubResource("RectangleShape2D_3fg0t")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
