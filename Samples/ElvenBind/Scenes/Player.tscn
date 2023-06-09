@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://xcptw1704pgn" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/elf m/elf_m_run_anim_f1.png" id="8_cr103"]
 [ext_resource type="Texture2D" uid="uid://iu1piw3omoi1" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/elf m/elf_m_run_anim_f2.png" id="9_gwki4"]
 [ext_resource type="Texture2D" uid="uid://u4pb6cb4fset" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/elf m/elf_m_run_anim_f3.png" id="10_24lop"]
-[ext_resource type="Script" path="res://Samples/ElvenBind/Scripts/player_animation.gd" id="11_v2e5r"]
+[ext_resource type="Script" path="res://Samples/Tetra Force/Scripts/player_animation.gd" id="11_v2e5r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yy6gj"]
 resource_name = "player_anim"

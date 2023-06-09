@@ -1,8 +1,6 @@
 class_name SLevelSelector
 extends SLevel
 
-signal go_to_level(id)
-
 const GAME_PROGRESS_KEY = "game_progress"
 
 @export var level_button: PackedScene

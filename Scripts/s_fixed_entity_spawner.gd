@@ -1,7 +1,7 @@
 class_name SFixedEntitySpawner
 extends SEntitySpawner
 
-@export var entities: Array
+@export var entities: Array[PackedScene]
 @export var entity_positions: Array
 
 

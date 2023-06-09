@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5c2fumoxlfgs"]
+
+[ext_resource type="Script" path="res://Samples/Tetra Force/Scripts/inventory.gd" id="1_ovdwu"]
+[ext_resource type="PackedScene" uid="uid://dby3w6b1lojd" path="res://Samples/Tetra Force/Scenes/Sword.tscn" id="2_1p68d"]
+[ext_resource type="PackedScene" uid="uid://ch0o71kfah45v" path="res://Samples/Tetra Force/Scenes/Axe.tscn" id="3_xplaf"]
+[ext_resource type="PackedScene" uid="uid://8g0nkoory1mm" path="res://Samples/Tetra Force/Scenes/InventoryItem.tscn" id="4_rbnd0"]
+
+[node name="Inventory" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -319.0
+offset_top = -367.0
+offset_right = -19.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_ovdwu")
+items = Array[PackedScene]([ExtResource("2_1p68d"), ExtResource("3_xplaf")])
+inventory_item_button = ExtResource("4_rbnd0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.509804, 0.509804, 0.509804, 0.521569)
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 43.0
+offset_right = 127.0
+offset_bottom = 342.0
+grow_horizontal = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scroll"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Scroll/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 2
+text = "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -69.5
+offset_right = 69.5
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1

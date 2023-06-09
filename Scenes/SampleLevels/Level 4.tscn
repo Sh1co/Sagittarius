@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://duuljo7llgyk"]
+[gd_scene load_steps=10 format=3 uid="uid://bbn5kmtm0lakl"]
 
 [ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_551hd"]
 [ext_resource type="PackedScene" uid="uid://ddj1b46vb83da" path="res://Scenes/SPlayer.tscn" id="2_f7t5c"]
-[ext_resource type="PackedScene" path="res://Scenes/SHealthBar.tscn" id="3_e0127"]
+[ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Scenes/SHealthBar.tscn" id="3_e0127"]
 [ext_resource type="PackedScene" path="res://Scenes/SFixedEnemySpawner.tscn" id="4_cdq8d"]
 [ext_resource type="PackedScene" path="res://Scenes/SFixedCoinsSpawner.tscn" id="5_n8u0x"]
 [ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="6_7txlt"]
@@ -12,24 +12,27 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilra5"]
 size = Vector2(51, 50)
 
-[node name="SLevel" type="Node2D"]
+[node name="SLevel" type="Node2D" node_paths=PackedStringArray("player_start_pos")]
 script = ExtResource("1_551hd")
 s_player = ExtResource("2_f7t5c")
+player_start_pos = NodePath("StartPosition")
 s_healthbar = ExtResource("3_e0127")
 s_enemy_spawner = ExtResource("4_cdq8d")
 s_coins_spawner = ExtResource("5_n8u0x")
 s_coins_counter_ui = ExtResource("6_7txlt")
 level_annoucement = true
-level_title_scene = NodePath("Control/LevelTitle")
+level_title_scene = NodePath("CanvasLayer/Control/LevelTitle")
 level_name = "Level 4"
 
-[node name="Control" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 647.0
 
-[node name="LevelTitle" type="Label" parent="Control"]
+[node name="LevelTitle" type="Label" parent="CanvasLayer/Control"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 14
@@ -47,10 +50,7 @@ text = "Level Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(105, 342)
-
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="CanvasLayer"]
 offset_left = 129.0
 offset_top = 87.0
 offset_right = 275.0
@@ -58,19 +58,22 @@ offset_bottom = 130.0
 text = "Complete Level"
 icon_alignment = 1
 
-[node name="Button2" type="Button" parent="."]
+[node name="Button2" type="Button" parent="CanvasLayer"]
 offset_left = 130.0
 offset_top = 144.0
 offset_right = 276.0
 offset_bottom = 191.0
 text = "Damage Player"
 
-[node name="Button3" type="Button" parent="."]
+[node name="Button3" type="Button" parent="CanvasLayer"]
 offset_left = 133.0
 offset_top = 203.0
 offset_right = 279.0
 offset_bottom = 250.0
 text = "Reset coins"
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(105, 342)
 
 [node name="SInteractable" type="StaticBody2D" parent="."]
 position = Vector2(332, 574)
@@ -86,6 +89,6 @@ texture = ExtResource("8_foi7b")
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_ilra5")
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
-[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button3" to="." method="_on_Button3_pressed"]

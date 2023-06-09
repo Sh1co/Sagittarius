@@ -27,6 +27,7 @@ var enemy_group = "Enemy"
 var screen_size
 var interact_pressed = false
 var health_consumable
+var shooter
 @onready var target = position
 
 
@@ -128,7 +129,7 @@ func _update_velocity():
 func _add_shooter():
 	if s_projectile_shooter == null:
 		return
-	var shooter = s_projectile_shooter.instantiate() as SProjectileShooter
+	shooter = s_projectile_shooter.instantiate() as SProjectileShooter
 	shooter.init([enemy_group], enemy_mask)
 	add_child(shooter)
 

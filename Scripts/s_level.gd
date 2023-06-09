@@ -3,6 +3,7 @@ extends Node2D
 
 signal level_completed
 signal level_failed
+signal go_to_level(id)
 
 @export var level_name: String
 
@@ -24,3 +25,9 @@ func fail_level():
 func player_died():
 	print("Player died, reseting level.")
 	fail_level()
+
+
+func move_to_level(index):
+	print("Going to level index: ", index)
+	emit_signal("go_to_level", index)
+	self.queue_free()
