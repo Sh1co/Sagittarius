@@ -1,0 +1,137 @@
+[gd_scene load_steps=16 format=3 uid="uid://cifedao6l8sge"]
+
+[ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_f701q"]
+[ext_resource type="PackedScene" uid="uid://s0sghvj6nh8o" path="res://Samples/GDQuest ARPG/Scenes/Player.tscn" id="2_c5ljp"]
+[ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Scenes/SHealthBar.tscn" id="2_h34mf"]
+[ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="3_ikxrc"]
+[ext_resource type="Script" path="res://Scripts/s_interactable.gd" id="4_lsdte"]
+[ext_resource type="PackedScene" uid="uid://dldh35g1xedm4" path="res://Samples/GDQuest ARPG/Scenes/Inventory.tscn" id="5_aop6v"]
+[ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="5_b4s42"]
+[ext_resource type="Texture2D" uid="uid://bwrbrkjj5rxjx" path="res://Samples/GDQuest ARPG/Art/Pond-of-Happiness.png" id="6_i0xd2"]
+[ext_resource type="PackedScene" uid="uid://dit4c8bah5lu" path="res://Samples/GDQuest ARPG/Scenes/Sword.tscn" id="6_ruft4"]
+[ext_resource type="PackedScene" uid="uid://chl5du0abo6so" path="res://Samples/GDQuest ARPG/Scenes/FollowingEnemy.tscn" id="7_cwqic"]
+[ext_resource type="PackedScene" uid="uid://b758iv162o1sg" path="res://Samples/GDQuest ARPG/Scenes/Axe.tscn" id="7_exrx3"]
+[ext_resource type="PackedScene" uid="uid://djkvrhcnnwio6" path="res://Samples/GDQuest ARPG/Scenes/InventoryItem.tscn" id="8_gocky"]
+[ext_resource type="PackedScene" uid="uid://cacbaj1bbwen3" path="res://Samples/GDQuest ARPG/Scenes/Gate.tscn" id="13_ayskq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilra5"]
+size = Vector2(51, 50)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_o3pim"]
+vertices = PackedVector2Array(-171, 72, -168, 46, -152, 72, -158, 76, 164, 66, 186, 42, 200, 72, 194, 145, 152, 180, -171, 143, -132, 120, -117, 119, -118, 140, -151, 72, -165, 43, -138, 67, -142, 72, 100, 65, 105, 180, 80, 157, -53, 13, -20, 10, 47, 12, -36, 156, -108, 66, -83, 175, -122, 181, -155, 165, -143, 110, -131, 119, -143, 109)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(9, 0, 3), PackedInt32Array(10, 11, 12), PackedInt32Array(13, 1, 14, 15, 16), PackedInt32Array(17, 4, 8, 18, 19), PackedInt32Array(20, 21, 22, 17, 19, 23, 24), PackedInt32Array(24, 23, 25, 26, 12), PackedInt32Array(27, 9, 3, 16, 28), PackedInt32Array(11, 29, 30, 16, 15, 24), PackedInt32Array(27, 28, 10, 12, 26), PackedInt32Array(12, 11, 24)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-83, 175, -122, 181, -155, 165, -171, 143, -171, 72, -168, 46, -152, 72, -158, 76, -142, 72, -143, 110, -132, 120, -117, 119, -118, 140, -117, 119, -131, 119, -143, 109, -142, 72, -151, 72, -168, 46, -165, 43, -138, 67, -108, 66, -53, 13, -20, 10, 47, 12, 100, 65, 164, 66, 186, 42, 200, 72, 194, 145, 152, 180, 105, 180, 80, 157, -36, 156)])
+
+[node name="SLevel" type="Node2D" node_paths=PackedStringArray("player_start_pos")]
+script = ExtResource("1_f701q")
+s_player = ExtResource("2_c5ljp")
+player_start_pos = NodePath("PlayerPos")
+s_healthbar = ExtResource("2_h34mf")
+s_coins_counter_ui = ExtResource("3_ikxrc")
+level_annoucement = true
+level_title_scene = NodePath("CanvasLayer/Control/LevelTitle")
+level_name = "Area 2"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+
+[node name="LevelTitle" type="Label" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -136.5
+offset_right = 3.0
+offset_bottom = -78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Level Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 129.0
+offset_top = 87.0
+offset_right = 275.0
+offset_bottom = 130.0
+text = "Complete Level"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 130.0
+offset_top = 144.0
+offset_right = 276.0
+offset_bottom = 191.0
+text = "Damage Player"
+
+[node name="Button3" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 133.0
+offset_top = 203.0
+offset_right = 279.0
+offset_bottom = 250.0
+text = "Reset coins"
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("5_aop6v")]
+items = Array[PackedScene]([ExtResource("6_ruft4"), ExtResource("7_exrx3")])
+inventory_item_button = ExtResource("8_gocky")
+
+[node name="SInteractable" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(332, 574)
+collision_layer = 32
+collision_mask = 3
+script = ExtResource("4_lsdte")
+
+[node name="Sprite2D" type="Sprite2D" parent="SInteractable"]
+modulate = Color(0.160784, 1, 0.219608, 1)
+texture = ExtResource("5_b4s42")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SInteractable"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_ilra5")
+
+[node name="Pond-of-happiness" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(231, 256)
+scale = Vector2(1.68634, 1.68634)
+texture = ExtResource("6_i0xd2")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(231, 256)
+scale = Vector2(1.68634, 1.68634)
+
+[node name="Right" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(152, 134.5, -1, 134.5, -1, 71.6, 41, 70.4, 41, 72.6, 54.7, 84.5, 83, 84.5, 96, 77.3, 96, 76.7, 109, 63.7, 109, 62.3, 113, 42.1, 113, 21, 103.8, 1.7, 89.9, 16.5, 52, 16.5, 52, 14.3, 21.2, -15.5, 4.2, -15.5, -1, -20.7, -1, -134.5, 0, -134.5, 152, -134.5)
+
+[node name="Left" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(1, -22.9, -7.5, -25.1, -20.4, -16.5, -24.7, -16.5, -38, -14.7, -70.2, 16.5, -89.8, 16.5, -104.5, 2.7, -110, 7.39999, -110, 14.5, -111, 57.5, -110.2, 57.5, -109.2, 69.5, -106.9, 72.5, -105.4, 72.5, -88.4, 84.5, -82.7, 84.5, -76.7, 86.5, -68.3, 86.5, -55, 84.7, -48.8, 78.5, -45.5, 78.5, -28.4, 70.5, 0, 70.5, 0, 73.5, 1, 134.5, -152, 134.5, -152, -134.5, 1, -134.5)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(219, 219)
+navigation_polygon = SubResource("NavigationPolygon_o3pim")
+
+[node name="FollowingEnemy" parent="." instance=ExtResource("7_cwqic")]
+position = Vector2(361, 376)
+
+[node name="PlayerPos" type="Marker2D" parent="."]
+position = Vector2(221, 251)
+
+[node name="Gate" parent="." instance=ExtResource("13_ayskq")]
+position = Vector2(219, 222)
+level_index = 0
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button3" to="." method="_on_Button3_pressed"]

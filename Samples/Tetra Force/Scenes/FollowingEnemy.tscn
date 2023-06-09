@@ -87,7 +87,6 @@ contact_monitor = true
 freeze = true
 freeze_mode = 1
 script = ExtResource("12_bpbsi")
-health = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(6, -1.5)
@@ -98,3 +97,5 @@ position = Vector2(5.5, -1.5)
 shape = SubResource("RectangleShape2D_3fg0t")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_SEnemy_body_entered"]

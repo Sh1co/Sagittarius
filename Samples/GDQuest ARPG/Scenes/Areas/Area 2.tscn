@@ -1,26 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1l1bnsfjqc7b"]
+[gd_scene load_steps=10 format=3 uid="uid://dx5q1qodavadp"]
 
-[ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_o2ihw"]
-[ext_resource type="PackedScene" uid="uid://dqag3vojartac" path="res://Samples/Tetra Force/Scenes/Player.tscn" id="2_f7cim"]
-[ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Scenes/SHealthBar.tscn" id="3_d10lr"]
-[ext_resource type="PackedScene" uid="uid://do8xfy5jonyjs" path="res://Samples/Tetra Force/Scenes/Areas/Spawners/CoinsSpawnerA2.tscn" id="4_vnd6r"]
-[ext_resource type="PackedScene" uid="uid://b5c2fumoxlfgs" path="res://Samples/Tetra Force/Scenes/Inventory.tscn" id="6_eur7d"]
-[ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="6_pynge"]
-[ext_resource type="Script" path="res://Scripts/s_interactable.gd" id="7_mglim"]
-[ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="8_ljinc"]
-[ext_resource type="Texture2D" uid="uid://kqwtmj23qjnv" path="res://Samples/Tetra Force/Art/Link's_House.png" id="8_qlh5e"]
-[ext_resource type="PackedScene" uid="uid://b2cf5v6b76q6y" path="res://Samples/Tetra Force/Scenes/Gate.tscn" id="10_0jjma"]
+[ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_xx5mw"]
+[ext_resource type="PackedScene" uid="uid://s0sghvj6nh8o" path="res://Samples/GDQuest ARPG/Scenes/Player.tscn" id="2_fq4jk"]
+[ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Scenes/SHealthBar.tscn" id="2_usxt8"]
+[ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="3_omjua"]
+[ext_resource type="Script" path="res://Scripts/s_interactable.gd" id="4_52rgb"]
+[ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="5_k1lsj"]
+[ext_resource type="Texture2D" uid="uid://ds5ifhbp7yawv" path="res://Samples/GDQuest ARPG/Art/Link's_House.png" id="6_7tfm0"]
+[ext_resource type="PackedScene" uid="uid://cacbaj1bbwen3" path="res://Samples/GDQuest ARPG/Scenes/Gate.tscn" id="7_d13ox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilra5"]
 size = Vector2(51, 50)
 
-[node name="SLevel2" type="Node2D" node_paths=PackedStringArray("player_start_pos")]
-script = ExtResource("1_o2ihw")
-s_player = ExtResource("2_f7cim")
-player_start_pos = NodePath("StartPosition")
-s_healthbar = ExtResource("3_d10lr")
-s_coins_spawner = ExtResource("4_vnd6r")
-s_coins_counter_ui = ExtResource("6_pynge")
+[node name="SLevel" type="Node2D" node_paths=PackedStringArray("player_start_pos")]
+script = ExtResource("1_xx5mw")
+s_player = ExtResource("2_fq4jk")
+player_start_pos = NodePath("StartPos")
+s_healthbar = ExtResource("2_usxt8")
+s_coins_counter_ui = ExtResource("3_omjua")
 level_annoucement = true
 level_title_scene = NodePath("CanvasLayer/Control/LevelTitle")
 level_name = "Area 1"
@@ -76,21 +73,16 @@ offset_right = 279.0
 offset_bottom = 250.0
 text = "Reset coins"
 
-[node name="Inventory" parent="CanvasLayer" instance=ExtResource("6_eur7d")]
-
-[node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(222, 304)
-
 [node name="SInteractable" type="StaticBody2D" parent="."]
 visible = false
 position = Vector2(332, 574)
 collision_layer = 32
 collision_mask = 3
-script = ExtResource("7_mglim")
+script = ExtResource("4_52rgb")
 
 [node name="Sprite2D" type="Sprite2D" parent="SInteractable"]
 modulate = Color(0.160784, 1, 0.219608, 1)
-texture = ExtResource("8_ljinc")
+texture = ExtResource("5_k1lsj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SInteractable"]
 position = Vector2(0.5, 1)
@@ -100,7 +92,7 @@ shape = SubResource("RectangleShape2D_ilra5")
 show_behind_parent = true
 position = Vector2(231, 256)
 scale = Vector2(1.68634, 1.68634)
-texture = ExtResource("8_qlh5e")
+texture = ExtResource("6_7tfm0")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 position = Vector2(231, 256)
@@ -123,8 +115,11 @@ polygon = PackedVector2Array(-43, 28, -40.8, 47, -44, 47, -70, 48, -70, 44.9, -6
 position = Vector2(0, 1.186)
 polygon = PackedVector2Array(80, 24.2, 80, 31, 81.3, 40, 77.9, 40, 64, 38.8, 64, 24, 65, 24, 65, 22.8)
 
-[node name="Gate" parent="." instance=ExtResource("10_0jjma")]
-position = Vector2(229, 370)
+[node name="Gate" parent="." instance=ExtResource("7_d13ox")]
+position = Vector2(227, 368)
+
+[node name="StartPos" type="Marker2D" parent="."]
+position = Vector2(230, 325)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_Button2_pressed"]
