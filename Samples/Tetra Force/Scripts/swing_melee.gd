@@ -5,17 +5,16 @@ extends SProjectile
 
 func _ready():
 	_fix_rotation()
-	var _tween = get_tree().create_tween()
-	_tween.tween_property(
+	var tween = get_tree().create_tween()
+	tween.tween_property(
 		self, "rotation", deg_to_rad(180) * (-1 if $"../AnimatedSprite2D".flip_h else 1), 0.1
 	)
-	_tween.tween_callback(self.queue_free.bind())
-	_tween.play()
+	tween.tween_callback(self.queue_free.bind())
+	tween.play()
 
 
-func movement(delta):
+func movement(_delta):
 	_fix_rotation()
-	pass
 
 
 func _fix_rotation():

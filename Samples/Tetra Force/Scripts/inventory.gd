@@ -10,17 +10,17 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_released("inventory"):
 		visible = !visible
 
 
 func _build_inventory():
 	for item in items:
-		var itemBtn = inventory_item_button.instantiate()
-		itemBtn.init(item)
-		itemBtn.connect("equip_item", _equip_item.bind())
-		$Scroll/VBoxContainer.add_child(itemBtn)
+		var item_btn = inventory_item_button.instantiate()
+		item_btn.init(item)
+		item_btn.connect("equip_item", _equip_item.bind())
+		$Scroll/VBoxContainer.add_child(item_btn)
 
 
 func _equip_item(item):
@@ -28,4 +28,3 @@ func _equip_item(item):
 	var level = get_parent().get_parent() as SGamePlayLevel
 	var player = level.player as SPlayer
 	player.shooter.s_projectile = item
-	pass

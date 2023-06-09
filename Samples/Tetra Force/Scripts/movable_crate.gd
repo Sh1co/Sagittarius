@@ -31,16 +31,16 @@ func _process(delta):
 
 	if touch_counter >= touch_time:
 		moved = true
-		var _tween = get_tree().create_tween()
+		var tween = get_tree().create_tween()
 		if Input.is_action_pressed("move_up"):
-			_tween.tween_property(self, "position:y", position.y - movement_size, movement_time)
+			tween.tween_property(self, "position:y", position.y - movement_size, movement_time)
 		elif Input.is_action_pressed("move_down"):
-			_tween.tween_property(self, "position:y", position.y + movement_size, movement_time)
+			tween.tween_property(self, "position:y", position.y + movement_size, movement_time)
 		elif Input.is_action_pressed("move_left"):
-			_tween.tween_property(self, "position:x", position.x - movement_size, movement_time)
+			tween.tween_property(self, "position:x", position.x - movement_size, movement_time)
 		elif Input.is_action_pressed("move_right"):
-			_tween.tween_property(self, "position:x", position.x + movement_size, movement_time)
-		_tween.play()
+			tween.tween_property(self, "position:x", position.x + movement_size, movement_time)
+		tween.play()
 
 
 func _on_body_entered(body):
