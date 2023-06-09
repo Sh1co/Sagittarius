@@ -32,7 +32,6 @@ func _process(delta):
 		print("lol")
 		var level = get_parent() as SGamePlayLevel
 		level.move_to_level(level_index)
-		
 
 
 func _on_body_entered(body):

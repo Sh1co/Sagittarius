@@ -2,17 +2,18 @@ extends CharacterBody2D
 
 @export var movement_speed: float = 200.0
 @export var target_search_rate = 1
-var movement_target_position: Vector2 = Vector2(60.0,180.0)
+var movement_target_position: Vector2 = Vector2(60.0, 180.0)
 var counter = 0
 
-
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+
 
 func _ready():
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
 
 	call_deferred("actor_setup")
+
 
 func _process(delta):
 	if $RigidBody2D == null:
@@ -29,8 +30,10 @@ func actor_setup():
 	await get_tree().physics_frame
 	set_movement_target(movement_target_position)
 
+
 func set_movement_target(movement_target: Vector2):
 	navigation_agent.target_position = movement_target
+
 
 func _physics_process(delta):
 	if navigation_agent.is_navigation_finished():
