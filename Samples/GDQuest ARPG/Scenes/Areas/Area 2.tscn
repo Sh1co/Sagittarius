@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dx5q1qodavadp"]
+[gd_scene load_steps=11 format=3 uid="uid://dx5q1qodavadp"]
 
 [ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_xx5mw"]
 [ext_resource type="PackedScene" uid="uid://s0sghvj6nh8o" path="res://Samples/GDQuest ARPG/Scenes/Player.tscn" id="2_fq4jk"]
 [ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Scenes/SHealthBar.tscn" id="2_usxt8"]
 [ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="3_omjua"]
+[ext_resource type="PackedScene" uid="uid://bc2i6dha8oaju" path="res://Samples/GDQuest ARPG/Scenes/Areas/Spawners/CoinsSpawnerA2.tscn" id="4_33om3"]
 [ext_resource type="Script" path="res://Scripts/s_interactable.gd" id="4_52rgb"]
 [ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="5_k1lsj"]
 [ext_resource type="Texture2D" uid="uid://ds5ifhbp7yawv" path="res://Samples/GDQuest ARPG/Art/Link's_House.png" id="6_7tfm0"]
@@ -17,6 +18,7 @@ script = ExtResource("1_xx5mw")
 s_player = ExtResource("2_fq4jk")
 player_start_pos = NodePath("StartPos")
 s_healthbar = ExtResource("2_usxt8")
+s_coins_spawner = ExtResource("4_33om3")
 s_coins_counter_ui = ExtResource("3_omjua")
 level_annoucement = true
 level_title_scene = NodePath("CanvasLayer/Control/LevelTitle")

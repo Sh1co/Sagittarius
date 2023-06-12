@@ -1,0 +1,203 @@
+[gd_scene load_steps=22 format=3 uid="uid://db4operatfbt"]
+
+[ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_elpjc"]
+[ext_resource type="PackedScene" uid="uid://c0kcbq7oqnesd" path="res://Samples/GDQuest Open RPG/Scenes/Player.tscn" id="2_d78cb"]
+[ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Scenes/SHealthBar.tscn" id="3_4rm1t"]
+[ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="4_m8nsg"]
+[ext_resource type="Script" path="res://Scripts/s_interactable.gd" id="5_g3h6o"]
+[ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="6_yxuis"]
+[ext_resource type="Texture2D" uid="uid://ds5ifhbp7yawv" path="res://Samples/GDQuest ARPG/Art/Link's_House.png" id="7_i3cly"]
+[ext_resource type="PackedScene" uid="uid://cacbaj1bbwen3" path="res://Samples/GDQuest ARPG/Scenes/Gate.tscn" id="8_cvb2f"]
+[ext_resource type="Texture2D" uid="uid://dot6hu52ssft8" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/doc/doc_idle_anim_f0.png" id="9_a3kyj"]
+[ext_resource type="Texture2D" uid="uid://dngw7xwclg7rg" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/doc/doc_idle_anim_f1.png" id="10_fusym"]
+[ext_resource type="Texture2D" uid="uid://c7kwk315tme03" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/doc/doc_idle_anim_f2.png" id="11_3la3n"]
+[ext_resource type="Texture2D" uid="uid://d0phxcin2hx1p" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/doc/doc_idle_anim_f3.png" id="12_4tofu"]
+[ext_resource type="Script" path="res://Samples/GDQuest Open RPG/Scripts/npc_animation.gd" id="13_1wb0f"]
+[ext_resource type="Texture2D" uid="uid://ty25o16rn5cc" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/knight m/knight_m_idle_anim_f0.png" id="14_81ciq"]
+[ext_resource type="Texture2D" uid="uid://ccldr30r8qenw" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/knight m/knight_m_idle_anim_f1.png" id="15_vh07j"]
+[ext_resource type="Texture2D" uid="uid://b6hnavuwnuppt" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/knight m/knight_m_idle_anim_f2.png" id="16_bwhwo"]
+[ext_resource type="Texture2D" uid="uid://cllsmyc8q0kib" path="res://Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/knight m/knight_m_idle_anim_f3.png" id="17_6cnld"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilra5"]
+size = Vector2(51, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8v05"]
+size = Vector2(15, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qks0h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_a3kyj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fusym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3la3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4tofu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lur76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_81ciq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vh07j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_bwhwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_6cnld")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SLevel" type="Node2D" node_paths=PackedStringArray("player_start_pos")]
+script = ExtResource("1_elpjc")
+s_player = ExtResource("2_d78cb")
+player_start_pos = NodePath("StartPos")
+s_healthbar = ExtResource("3_4rm1t")
+s_coins_counter_ui = ExtResource("4_m8nsg")
+level_annoucement = true
+level_title_scene = NodePath("CanvasLayer/Control/LevelTitle")
+level_name = "Area 1"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+
+[node name="LevelTitle" type="Label" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -136.5
+offset_right = 3.0
+offset_bottom = -78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Level Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 129.0
+offset_top = 87.0
+offset_right = 275.0
+offset_bottom = 130.0
+text = "Complete Level"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 130.0
+offset_top = 144.0
+offset_right = 276.0
+offset_bottom = 191.0
+text = "Damage Player"
+
+[node name="Button3" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 133.0
+offset_top = 203.0
+offset_right = 279.0
+offset_bottom = 250.0
+text = "Reset coins"
+
+[node name="SInteractable" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(332, 574)
+collision_layer = 32
+collision_mask = 3
+script = ExtResource("5_g3h6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="SInteractable"]
+modulate = Color(0.160784, 1, 0.219608, 1)
+texture = ExtResource("6_yxuis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SInteractable"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_ilra5")
+
+[node name="House" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(231, 256)
+scale = Vector2(1.68634, 1.68634)
+texture = ExtResource("7_i3cly")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(231, 256)
+scale = Vector2(1.68634, 1.68634)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(1, -57.1, -20, -55.9, -20, -58.2, -22.8, -61, -38, -61, -40.1, -22, -70.5, -22, -72.5, -15, -84, -15, -84, 60.2, -72, 63, -12, 63, -12, 65.4, -8.9, 70, -1.2, 70, 1, 72.2, 1, 89, -113, 89, -113, -89, 1, -89)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(113, 89, -1, 89, -1, 71.3, 6.2, 70.2, 8.6, 63, 24, 63, 87, 62, 87, -62.1, 73.7, -62.9, 69, -57, 42, -57, 39, -61, 23.8, -61, 19.8, -57, 5.6, -57, 2.1, -54.7, 0, -55.8, 0, -89, 113, -89)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(-0.593002, -1.186)
+polygon = PackedVector2Array(71, -22, 73.1, 9, 70, 9, 24, 10, 24, 6.9, 26, -22.1, 26, -25, 71, -25)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(-43, 28, -40.8, 47, -44, 47, -70, 48, -70, 44.9, -69, 27.9, -69, 25, -43, 25)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(0, 1.186)
+polygon = PackedVector2Array(80, 24.2, 80, 31, 81.3, 40, 77.9, 40, 64, 38.8, 64, 24, 65, 24, 65, 22.8)
+
+[node name="Gate" parent="." instance=ExtResource("8_cvb2f")]
+position = Vector2(227, 368)
+
+[node name="StartPos" type="Marker2D" parent="."]
+position = Vector2(230, 325)
+
+[node name="Useless NPC" type="StaticBody2D" parent="."]
+position = Vector2(312, 189)
+scale = Vector2(1.36266, 1.36266)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Useless NPC"]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_f8v05")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Useless NPC"]
+sprite_frames = SubResource("SpriteFrames_qks0h")
+frame_progress = 0.499632
+script = ExtResource("13_1wb0f")
+
+[node name="Useless NPC2" type="StaticBody2D" parent="."]
+position = Vector2(120, 274)
+scale = Vector2(1.36266, 1.36266)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Useless NPC2"]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_f8v05")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Useless NPC2"]
+sprite_frames = SubResource("SpriteFrames_lur76")
+script = ExtResource("13_1wb0f")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button3" to="." method="_on_Button3_pressed"]
