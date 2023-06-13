@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://diwexu2ymh3i3"]
+
+[ext_resource type="Script" path="res://Samples/Super Star Fighter/Scripts/DelayedCoinSpawner.gd" id="1_m4ppq"]
+[ext_resource type="PackedScene" uid="uid://bj011k7m4req1" path="res://Samples/Super Star Fighter/Scenes/Coin.tscn" id="2_mso5r"]
+
+[node name="CoinSpawner" type="Node2D"]
+script = ExtResource("1_m4ppq")
+entities = Array[PackedScene]([ExtResource("2_mso5r"), ExtResource("2_mso5r"), ExtResource("2_mso5r"), ExtResource("2_mso5r"), ExtResource("2_mso5r"), ExtResource("2_mso5r"), ExtResource("2_mso5r"), ExtResource("2_mso5r"), ExtResource("2_mso5r"), ExtResource("2_mso5r"), ExtResource("2_mso5r"), ExtResource("2_mso5r")])
+entity_positions = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5"), NodePath("6"), NodePath("7"), NodePath("8"), NodePath("9"), NodePath("10"), NodePath("11"), NodePath("12")]
+
+[node name="SpawnDelay" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="1" type="Marker2D" parent="."]
+position = Vector2(159, 78)
+
+[node name="2" type="Marker2D" parent="."]
+position = Vector2(223, 80)
+
+[node name="3" type="Marker2D" parent="."]
+position = Vector2(281, 80)
+
+[node name="4" type="Marker2D" parent="."]
+position = Vector2(341, 82)
+
+[node name="5" type="Marker2D" parent="."]
+position = Vector2(384, 84)
+
+[node name="6" type="Marker2D" parent="."]
+position = Vector2(1051, 79)
+
+[node name="7" type="Marker2D" parent="."]
+position = Vector2(1055, 129)
+
+[node name="8" type="Marker2D" parent="."]
+position = Vector2(1057, 183)
+
+[node name="9" type="Marker2D" parent="."]
+position = Vector2(1061, 255)
+
+[node name="10" type="Marker2D" parent="."]
+position = Vector2(720, 280)
+
+[node name="11" type="Marker2D" parent="."]
+position = Vector2(665, 330)
+
+[node name="12" type="Marker2D" parent="."]
+position = Vector2(611, 383)
+
+[connection signal="timeout" from="SpawnDelay" to="." method="_spawn_with_delay"]
