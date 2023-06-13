@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpagkjtbex8dp"]
+[gd_scene load_steps=7 format=3 uid="uid://bpagkjtbex8dp"]
 
 [ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_15oqo"]
 [ext_resource type="PackedScene" uid="uid://bui1gfuy6qk3m" path="res://Samples/Super Star Fighter/Scenes/PlayerWithFrontShooter.tscn" id="2_g57os"]
 [ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Scenes/SHealthBar.tscn" id="3_wkvjn"]
 [ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="4_38par"]
 [ext_resource type="PackedScene" uid="uid://diwexu2ymh3i3" path="res://Samples/Super Star Fighter/Scenes/Levels/Spawners/DelayedCoinSpawner.tscn" id="5_d74yy"]
+[ext_resource type="Texture2D" uid="uid://dhpkgqdohxyf3" path="res://Samples/Super Star Fighter/Art/world.png" id="6_tvqub"]
 
 [node name="SLevel" type="Node2D" node_paths=PackedStringArray("player_start_pos")]
 script = ExtResource("1_15oqo")
@@ -70,6 +71,21 @@ text = "Reset coins"
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(105, 342)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(445, 261)
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-404, -54, -397, 201, -261, 343, 106, 348, 108, 388, -447, 390, -446, -261, 100, -262, 103, -220, -202, -214)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(107, 347, 483, 340, 675, 215, 668, -48, 465, -218, 84, -216, 85, -266, 709, -259, 707, 388, 98, 390)
+
+[node name="World" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(132, 65)
+scale = Vector2(0.600736, 0.600736)
+texture = ExtResource("6_tvqub")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_Button2_pressed"]

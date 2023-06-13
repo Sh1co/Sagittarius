@@ -1,16 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0cov7214xo2p"]
+[gd_scene load_steps=9 format=3 uid="uid://c0cov7214xo2p"]
 
 [ext_resource type="Script" path="res://Scripts/s_gameplay_level.gd" id="1_ww81h"]
 [ext_resource type="PackedScene" uid="uid://cuqc4xyrmx3eq" path="res://Samples/Super Star Fighter/Scenes/PlayerWithRearShooter.tscn" id="2_wdkg0"]
 [ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Scenes/SHealthBar.tscn" id="3_gp0gy"]
-[ext_resource type="PackedScene" path="res://Scenes/SCoinsCounterUI.tscn" id="6_0dicg"]
+[ext_resource type="Texture2D" uid="uid://dhpkgqdohxyf3" path="res://Samples/Super Star Fighter/Art/world.png" id="5_kxl1n"]
+[ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="5_ra4sc"]
+[ext_resource type="Script" path="res://Samples/Super Star Fighter/Scripts/flag.gd" id="5_xkelc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wn6td"]
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir0pb"]
+size = Vector2(30, 31)
 
 [node name="SLevel" type="Node2D" node_paths=PackedStringArray("player_start_pos")]
 script = ExtResource("1_ww81h")
 s_player = ExtResource("2_wdkg0")
 player_start_pos = NodePath("StartPosition")
 s_healthbar = ExtResource("3_gp0gy")
-s_coins_counter_ui = ExtResource("6_0dicg")
 level_annoucement = true
 level_title_scene = NodePath("CanvasLayer/Control/LevelTitle")
 level_name = "Level 1"
@@ -69,6 +76,41 @@ text = "Reset coins"
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(105, 342)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(445, 261)
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-404, -54, -397, 201, -261, 343, 106, 348, 108, 388, -447, 390, -446, -261, 100, -262, 103, -220, -202, -214)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(107, 347, 483, 340, 675, 215, 668, -48, 465, -218, 84, -216, 85, -266, 709, -259, 707, 388, 98, 390)
+
+[node name="World" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(132, 65)
+scale = Vector2(0.600736, 0.600736)
+texture = ExtResource("5_kxl1n")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(445, 261)
+collision_mask = 19
+physics_material_override = SubResource("PhysicsMaterial_wn6td")
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+can_sleep = false
+freeze_mode = 1
+script = ExtResource("5_xkelc")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.498955, 0.498955)
+texture = ExtResource("5_ra4sc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ir0pb")
+
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]
