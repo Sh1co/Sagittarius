@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuqc4xyrmx3eq"]
+
+[ext_resource type="Script" path="res://Samples/Super Star Fighter/Scripts/player_movement.gd" id="1_s62cf"]
+[ext_resource type="PackedScene" uid="uid://blu643qmd8nhy" path="res://Samples/Super Star Fighter/Scenes/RearProjectileShooter.tscn" id="2_e17tw"]
+[ext_resource type="Texture2D" uid="uid://dhlojen07mf6j" path="res://Samples/Super Star Fighter/Art/Main Ship - Base - Full health.png" id="3_unapx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4lk32"]
+bounce = 0.5
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(30, 27)
+
+[node name="SPlayer" type="RigidBody2D" groups=["Player"]]
+collision_layer = 2
+collision_mask = 61
+physics_material_override = SubResource("PhysicsMaterial_4lk32")
+gravity_scale = 0.0
+script = ExtResource("1_s62cf")
+hold_dash = false
+lock_to_screen = false
+acceleration = Vector2(650, 650)
+deceleration = Vector2(400, 400)
+s_projectile_shooter = ExtResource("2_e17tw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_unapx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("1")
