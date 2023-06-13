@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-
 var locked = false
 
 
@@ -14,7 +13,7 @@ func _input(event):
 		global_position = pos
 		freeze = false
 		$CollisionShape2D.disabled = false
-		
+
 
 func _on_body_entered(body):
 	if body.is_in_group("Player") && !locked:
@@ -25,4 +24,3 @@ func _on_body_entered(body):
 		body.add_child(self)
 		global_position = pos
 		freeze = true
-		
