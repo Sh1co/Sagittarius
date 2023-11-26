@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://crj8fhdooocd6"]
+
+[ext_resource type="Script" path="res://Sagittarius/Samples/Tetra Force/Scripts/singlebuttonshooter.gd" id="1_efmjs"]
+[ext_resource type="PackedScene" uid="uid://dit4c8bah5lu" path="res://Sagittarius/Samples/GDQuest ARPG/Scenes/Sword.tscn" id="2_a1oym"]
+
+
+[node name="SingleButtonShooter" type="Node2D"]
+script = ExtResource("1_efmjs")
+s_projectile = ExtResource("2_a1oym")
+
+[node name="ShootingCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

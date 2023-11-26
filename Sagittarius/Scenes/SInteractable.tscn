@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://54bbarhnvphj"]
+
+[ext_resource type="Script" path="res://Sagittarius/Scripts/s_interactable.gd" id="1_f5823"]
+[ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="2_oac4t"]
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilra5"]
+size = Vector2(51, 50)
+
+[node name="SInteractable" type="StaticBody2D"]
+position = Vector2(332, 574)
+collision_layer = 32
+collision_mask = 3
+script = ExtResource("1_f5823")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.160784, 1, 0.219608, 1)
+texture = ExtResource("2_oac4t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_ilra5")

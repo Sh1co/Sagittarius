@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhoo0ab2t8xko"]
+
+[ext_resource type="PackedScene" uid="uid://bnt581kpoeql4" path="res://Sagittarius/Scenes/SEnemy.tscn" id="1"]
+[ext_resource type="Script" path="res://Sagittarius/Scripts/s_stationary_enemy.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://ccbd236lfw3ax" path="res://Sagittarius/Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/_tiles/column.png" id="4_g1g0m"]
+
+
+[node name="SEnemy" instance=ExtResource("1")]
+modulate = Color(1, 1, 1, 1)
+script = ExtResource("2")
+health = 1
+damage = 0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -2.375)
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("4_g1g0m")

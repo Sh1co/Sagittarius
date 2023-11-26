@@ -1,0 +1,13 @@
+[gd_scene load_steps=6 format=3 uid="uid://c81wpa6cpup8p"]
+
+[ext_resource type="Script" path="res://Sagittarius/Scripts/s_game.gd" id="1_8ijfj"]
+[ext_resource type="PackedScene" uid="uid://c763wj24yec55" path="res://Sagittarius/Samples/Super Star Fighter/Scenes/MainMenu.tscn" id="2_miqmr"]
+[ext_resource type="PackedScene" uid="uid://bai382hr8b1vc" path="res://Sagittarius/Samples/Super Star Fighter/Scenes/LevelSelector.tscn" id="3_75h3e"]
+[ext_resource type="PackedScene" uid="uid://c0cov7214xo2p" path="res://Sagittarius/Samples/Super Star Fighter/Scenes/Levels/Capture.tscn" id="4_xnvv6"]
+[ext_resource type="PackedScene" uid="uid://bpagkjtbex8dp" path="res://Sagittarius/Samples/Super Star Fighter/Scenes/Levels/Collect.tscn" id="5_ewiag"]
+
+[node name="SGame" type="Node2D"]
+script = ExtResource("1_8ijfj")
+s_main_menu = ExtResource("2_miqmr")
+s_level_selector = ExtResource("3_75h3e")
+levels = Array[PackedScene]([ExtResource("4_xnvv6"), ExtResource("5_ewiag")])

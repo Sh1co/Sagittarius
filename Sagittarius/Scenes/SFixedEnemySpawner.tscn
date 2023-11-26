@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c87ee43qysbmd"]
+
+[ext_resource type="PackedScene" path="res://Sagittarius/Scenes/SFixedEntitySpawner.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bnt581kpoeql4" path="res://Sagittarius/Scenes/SEnemy.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://Sagittarius/Scenes/SShootingEnemy.tscn" id="3"]
+
+
+[node name="SFixedEnemySpawner" instance=ExtResource("1")]
+entities = Array[PackedScene]([ExtResource("2"), ExtResource("2"), ExtResource("3")])
+entity_positions = [NodePath("Pos1"), NodePath("Pos2"), NodePath("Pos3")]
+
+[node name="Pos3" type="Marker2D" parent="." index="2"]
+position = Vector2(905, 249)

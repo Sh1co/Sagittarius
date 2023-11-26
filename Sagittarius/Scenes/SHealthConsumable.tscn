@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1cb7laq17sva"]
+
+[ext_resource type="Script" path="res://Sagittarius/Scenes/s_health_consumable.gd" id="1_55u7m"]
+
+
+[node name="SHealthConsumable" type="Node"]
+script = ExtResource("1_55u7m")
+consumable_name = "Health"

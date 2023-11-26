@@ -1,0 +1,19 @@
+[gd_scene load_steps=9 format=3 uid="uid://be2db6ctq4hb8"]
+
+[ext_resource type="Script" path="res://Sagittarius/Scripts/s_game.gd" id="1_yf4hp"]
+[ext_resource type="PackedScene" uid="uid://befxen5oua5ar" path="res://Sagittarius/Scenes/SMainMenu.tscn" id="2_708yb"]
+[ext_resource type="PackedScene" uid="uid://bpvfvjyqdxab7" path="res://Sagittarius/Scenes/SLevelSelector.tscn" id="3_uqbnv"]
+[ext_resource type="PackedScene" uid="uid://dtoerk4c7561p" path="res://Sagittarius/Scenes/SampleLevels/Level 1.tscn" id="4_ootxs"]
+[ext_resource type="PackedScene" uid="uid://ibeghuy000l0" path="res://Sagittarius/Scenes/SampleLevels/Level 2.tscn" id="5_go6mj"]
+[ext_resource type="PackedScene" uid="uid://dp7kxw8eqwecg" path="res://Sagittarius/Scenes/SampleLevels/Level 3.tscn" id="6_ei8nr"]
+[ext_resource type="PackedScene" uid="uid://bbn5kmtm0lakl" path="res://Sagittarius/Scenes/SampleLevels/Level 4.tscn" id="7_rv6hn"]
+[ext_resource type="PackedScene" path="res://Sagittarius/Scenes/SCoinsManager.tscn" id="8_effdo"]
+
+[node name="SGame" type="Node2D"]
+position = Vector2(2, 0)
+script = ExtResource("1_yf4hp")
+s_main_menu = ExtResource("2_708yb")
+s_level_selector = ExtResource("3_uqbnv")
+levels = Array[PackedScene]([ExtResource("4_ootxs"), ExtResource("5_go6mj"), ExtResource("6_ei8nr"), ExtResource("7_rv6hn")])
+s_coins_manager = ExtResource("8_effdo")
+save_level_progress = true

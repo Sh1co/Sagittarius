@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://djkvrhcnnwio6"]
+
+[ext_resource type="Script" path="res://Sagittarius/Samples/Tetra Force/Scripts/inventory_item.gd" id="1_jujkm"]
+
+
+[node name="InventoryItem" type="Button"]
+text = "Lol"
+script = ExtResource("1_jujkm")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

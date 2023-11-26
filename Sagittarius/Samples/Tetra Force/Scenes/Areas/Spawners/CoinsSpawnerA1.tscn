@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dctmdurgiyp1e"]
+
+[ext_resource type="Script" path="res://Sagittarius/Scripts/s_fixed_entity_spawner.gd" id="1_8ukwa"]
+[ext_resource type="PackedScene" uid="uid://dvs3lqnyfqdet" path="res://Sagittarius/Samples/Tetra Force/Scenes/Coin2.tscn" id="2_wvy4f"]
+[ext_resource type="PackedScene" uid="uid://dcs81xs0ldhlo" path="res://Sagittarius/Samples/Tetra Force/Scenes/Coin.tscn" id="3_j2c4y"]
+
+
+[node name="CoinsSpawner" type="Node2D"]
+script = ExtResource("1_8ukwa")
+entities = Array[PackedScene]([ExtResource("2_wvy4f"), ExtResource("3_j2c4y"), ExtResource("3_j2c4y"), ExtResource("2_wvy4f")])
+entity_positions = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4")]
+
+[node name="1" type="Marker2D" parent="."]
+position = Vector2(322, 310)
+
+[node name="2" type="Marker2D" parent="."]
+position = Vector2(370, 309)
+
+[node name="3" type="Marker2D" parent="."]
+position = Vector2(372, 355)
+
+[node name="4" type="Marker2D" parent="."]
+position = Vector2(325, 356)

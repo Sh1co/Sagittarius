@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://Sagittarius/Scenes/SFixedEntitySpawner.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://ds4qdbf722tka" path="res://Sagittarius/Scenes/SCoin.tscn" id="2"]
+
+[node name="SFixedEntitySpawner" instance=ExtResource( 1 )]
+entities = [ ExtResource( 2 ), ExtResource( 2 ) ]
+entity_positions = [ NodePath("Pos1"), NodePath("Pos2") ]
+
+[node name="Pos1" parent="." index="0"]
+position = Vector2( 817, 292 )
+
+[node name="Pos2" parent="." index="1"]
+position = Vector2( 472, 293 )

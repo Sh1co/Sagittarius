@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7sgw1tw3bbqw"]
+
+[ext_resource type="Script" path="res://Sagittarius/Scripts/s_game.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dv553pq04h5yu" path="res://Sagittarius/Samples/Dodge the creeps/MainMenu.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dk2dlv04qardc" path="res://Sagittarius/Samples/Dodge the creeps/GamePlay.tscn" id="3"]
+
+[node name="SGame" type="Node2D"]
+script = ExtResource("1")
+s_main_menu = ExtResource("2")
+levels = Array[PackedScene]([ExtResource("3")])

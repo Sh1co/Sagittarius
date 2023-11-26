@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://m0iem51sid0c"]
+
+[ext_resource type="Script" path="res://Sagittarius/Scripts/s_game.gd" id="1_fhbmb"]
+[ext_resource type="PackedScene" uid="uid://c1l1bnsfjqc7b" path="res://Sagittarius/Samples/Tetra Force/Scenes/Areas/Area 2.tscn" id="2_ni31i"]
+[ext_resource type="PackedScene" uid="uid://c5xagvjnowsyw" path="res://Sagittarius/Samples/Tetra Force/Scenes/Areas/Area 1.tscn" id="3_r4y6c"]
+[ext_resource type="PackedScene" path="res://Sagittarius/Scenes/SCoinsManager.tscn" id="4_ocaha"]
+
+[node name="SGame" type="Node2D"]
+position = Vector2(1, 0)
+script = ExtResource("1_fhbmb")
+levels = Array[PackedScene]([ExtResource("2_ni31i"), ExtResource("3_r4y6c")])
+s_coins_manager = ExtResource("4_ocaha")
+save_level_progress = true

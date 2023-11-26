@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4j46e4j8fgj"]
+
+[ext_resource type="Script" path="res://Sagittarius/Samples/Super Star Fighter/Scripts/singlebuttonshooter.gd" id="1_hm3xi"]
+[ext_resource type="PackedScene" uid="uid://c2wxbeq5ifm0j" path="res://Sagittarius/Samples/Super Star Fighter/Scenes/Projectile.tscn" id="2_abinf"]
+
+[node name="ProjectileShooter" type="Node2D"]
+position = Vector2(0, -12)
+script = ExtResource("1_hm3xi")
+s_projectile = ExtResource("2_abinf")
+
+[node name="ShootingCooldown" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true

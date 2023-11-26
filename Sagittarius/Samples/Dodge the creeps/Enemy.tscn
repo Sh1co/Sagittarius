@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dagdg2tgb7cfy"]
+
+[ext_resource type="Script" path="res://Sagittarius/Samples/Dodge the creeps/Scripts/enemy.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://yg5ah158jfq5" path="res://Sagittarius/Samples/Dodge the creeps/art/enemyFlyingAlt_1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://pewqt8plck5g" path="res://Sagittarius/Samples/Dodge the creeps/art/enemyFlyingAlt_2.png" id="3"]
+
+[sub_resource type="CircleShape2D" id="3"]
+radius = 51.12
+
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="SEnemy" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 3
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("1")
+damage = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 0.5)
+shape = SubResource("3")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_SEnemy_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

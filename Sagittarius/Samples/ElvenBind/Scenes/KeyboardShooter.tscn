@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ctxrdwujuvi"]
+
+[ext_resource type="Script" path="res://Sagittarius/Scripts/s_manual_keyboard_shooter.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://7a5jjss1qlfg" path="res://Sagittarius/Samples/ElvenBind/Scenes/Projectile.tscn" id="2_uxn26"]
+
+
+[node name="SManualKeyboardShooter" type="Node2D"]
+script = ExtResource("1")
+s_projectile = ExtResource("2_uxn26")
+
+[node name="ShootingCooldown" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true

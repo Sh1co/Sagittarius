@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="1"]
+[ext_resource type="Script" path="res://Sagittarius/Scripts/s_collectable.gd" id="2"]
+
+
+[sub_resource type="RectangleShape2D" id=1]
+size = Vector2( 32, 31.5 )
+
+[node name="SCollectable" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 1 )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_SCollectable_body_entered"]

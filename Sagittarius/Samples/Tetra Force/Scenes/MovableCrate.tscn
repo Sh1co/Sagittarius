@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2nmry8kycf6j"]
+
+[ext_resource type="Script" path="res://Sagittarius/Samples/Tetra Force/Scripts/movable_crate.gd" id="1_nuw0p"]
+[ext_resource type="Texture2D" uid="uid://cqgnstsv6xiar" path="res://Sagittarius/Samples/ElvenBind/0x72_DungeonTilesetII_v1.5/frames/_tiles/crate.png" id="2_bqvoe"]
+
+
+[node name="MovableCrate" type="RigidBody2D"]
+position = Vector2(96, 347)
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_nuw0p")
+
+[node name="Crate" type="Sprite2D" parent="."]
+texture = ExtResource("2_bqvoe")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(5, -7.6, 7, -6.6, 7, 9, 5.6, 9, 4.6, 11, -5, 11, -5, 9.6, -7, 8.6, -7, -6.6, -5, -7.6, -5, -9, 5, -9)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

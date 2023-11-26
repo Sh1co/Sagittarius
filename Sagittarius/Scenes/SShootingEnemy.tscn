@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bnt581kpoeql4" path="res://Sagittarius/Scenes/SEnemy.tscn" id="1"]
+[ext_resource type="Script" path="res://Sagittarius/Scripts/s_stationary_enemy.gd" id="2"]
+[ext_resource type="PackedScene" path="res://Sagittarius/Scenes/SAutomaticShooter.tscn" id="3"]
+
+[node name="SEnemy" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+s_projectile_shooter = ExtResource( 3 )

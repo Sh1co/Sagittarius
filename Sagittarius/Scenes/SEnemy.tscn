@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnt581kpoeql4"]
+
+[ext_resource type="Texture2D" uid="uid://cihsvbf6d0qe1" path="res://icon.png" id="1"]
+[ext_resource type="Script" path="res://Sagittarius/Scripts/s_enemy.gd" id="2"]
+
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(14, 37.25)
+
+[node name="SEnemy" type="RigidBody2D" groups=["Enemy"]]
+modulate = Color(0.878431, 0.0705882, 0.0705882, 1)
+collision_layer = 4
+collision_mask = 3
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+
+[connection signal="body_entered" from="." to="." method="_on_SEnemy_body_entered"]

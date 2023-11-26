@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpagkjtbex8dp"]
+
+[ext_resource type="Script" path="res://Sagittarius/Scripts/s_gameplay_level.gd" id="1_851a5"]
+[ext_resource type="PackedScene" uid="uid://bui1gfuy6qk3m" path="res://Sagittarius/Samples/Super Star Fighter/Scenes/PlayerWithFrontShooter.tscn" id="2_usjjo"]
+[ext_resource type="PackedScene" uid="uid://bs2fvwbw55nto" path="res://Sagittarius/Scenes/SHealthBar.tscn" id="3_cswnk"]
+[ext_resource type="PackedScene" uid="uid://diwexu2ymh3i3" path="res://Sagittarius/Samples/Super Star Fighter/Scenes/Levels/Spawners/DelayedCoinSpawner.tscn" id="4_hf7tu"]
+[ext_resource type="PackedScene" path="res://Sagittarius/Scenes/SCoinsCounterUI.tscn" id="5_ecb6h"]
+[ext_resource type="Texture2D" uid="uid://dhpkgqdohxyf3" path="res://Sagittarius/Samples/Super Star Fighter/Art/world.png" id="6_rhxqs"]
+
+[node name="SLevel" type="Node2D" node_paths=PackedStringArray("player_start_pos")]
+script = ExtResource("1_851a5")
+s_player = ExtResource("2_usjjo")
+player_start_pos = NodePath("StartPosition")
+s_healthbar = ExtResource("3_cswnk")
+s_coins_spawner = ExtResource("4_hf7tu")
+s_coins_counter_ui = ExtResource("5_ecb6h")
+level_annoucement = true
+level_title_scene = NodePath("CanvasLayer/Control/LevelTitle")
+level_name = "Level 1"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+
+[node name="LevelTitle" type="Label" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -136.5
+offset_right = 3.0
+offset_bottom = -78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Level Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 129.0
+offset_top = 87.0
+offset_right = 275.0
+offset_bottom = 130.0
+text = "Complete Level"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 130.0
+offset_top = 144.0
+offset_right = 276.0
+offset_bottom = 191.0
+text = "Damage Player"
+
+[node name="Button3" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 133.0
+offset_top = 203.0
+offset_right = 279.0
+offset_bottom = 250.0
+text = "Reset coins"
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(105, 342)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(445, 261)
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-404, -54, -397, 201, -261, 343, 106, 348, 108, 388, -447, 390, -446, -261, 100, -262, 103, -220, -202, -214)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(107, 347, 483, 340, 675, 215, 668, -48, 465, -218, 84, -216, 85, -266, 709, -259, 707, 388, 98, 390)
+
+[node name="World" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(132, 65)
+scale = Vector2(0.600736, 0.600736)
+texture = ExtResource("6_rhxqs")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button3" to="." method="_on_Button3_pressed"]
